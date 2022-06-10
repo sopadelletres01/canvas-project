@@ -4,3 +4,12 @@ body,html {
   overflow: hidden;
   margin: 0;
 }
+
+
+.rotateLeft{
+  transform: scaleX(-1);
+}
+
+.rotateRight{
+  transform: unset;
+}

@@ -36,7 +36,6 @@ export class Player{
 
         if ( (this.x + dx) <= (this.game.width - this.width) ) this.x += dx;
         if ( (this.y + dy) <= (this.game.height - this.height) ) this.y += dy;
-        
     }
 
     generateImage(src) {
