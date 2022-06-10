@@ -45,7 +45,7 @@ export class Game {
       //array
       let door = document.getElementById("door");
       console.log("DOOR",door)
-      let obj = new SceneObject(200,200,100,100,door)
+      let obj = new SceneObject(this.width/2,this.height/2,100,100,door)
       
     }
   }

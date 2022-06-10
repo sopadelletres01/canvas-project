@@ -1,5 +1,6 @@
 export class SceneObject{
     constructor(x,y,width,height,box){
+        this.debugMode = true;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -15,12 +16,12 @@ export class SceneObject{
         Object.assign(this.box.style,{
             cursor: "pointer",
             zIndex: "2",
-            width: "200px",
-            height: "200px",
+            width: this.width+"px",
+            height: this.height+"px",
             position: "absolute",
-            background: "red",
-            left: "50%",
-            top: "50%"
+            background: this.debugMode ? "red" : "transparent",
+            left: this.x+"px",
+            top: this.y+"px"
          })
         
     }
