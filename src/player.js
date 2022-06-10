@@ -9,6 +9,8 @@ export class Player{
         this.height = 200;
         this.x = 0;
         this.y = 100;
+        this.destinationX = this.x;
+        this.destinationY = this.y;
         this.image = this.generateImage(this.IMAGE_SRC);
     }
 
@@ -18,15 +20,22 @@ export class Player{
 
     update(input){
         //Update variables
-        console.log(this.game.width)
-        console.log(this.game.height)
-        console.log("X",input.destinationX)
-        console.log("Y",input.destinationY)
-        if ( input.destinationX <= (this.game.width - this.width) ) this.x = input.destinationX;
-        else this.x = this.game.width - this.width;
-        if ( input.destinationY <= (this.game.height - this.height) ) this.y = input.destinationY;
-        else this.y = this.game.height - this.height;
+        this.destinationX = input.x || this.x;
+        this.destinationY = input.y || this.y;
+        //Distancia desde la posicion actual hasta la posicion deseada
+        //factor de velocidad = .125
+        let dx = (this.destinationX - this.x) * .125;
+        var dy = (this.destinationY - this.y) * .125;
+        //Hipotenusa (distancia al punto)
+        let distance = Math.sqrt(dx*dx + dy*dy);
+        //Capamos la distancia de movimiento a 5px
+        if(distance > 5){
+            dx *= 5/distance;
+            dy *= 5/distance;
+        }
 
+        if ( (this.x + dx) <= (this.game.width - this.width) ) this.x += dx;
+        if ( (this.y + dy) <= (this.game.height - this.height) ) this.y += dy;
         
     }
 

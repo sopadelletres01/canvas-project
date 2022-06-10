@@ -1,14 +1,12 @@
 export class InputHandler {
-    destinationX;
-    destinationY;
+    x;
+    y;
 
     constructor(){
         
         window.addEventListener('click', e=>{
-            this.destinationX = e.clientX;
-            this.destinationY = e.clientY;
-            console.log(this)
-           
+            this.x = e.clientX;
+            this.y = e.clientY;
         })
 
     }
