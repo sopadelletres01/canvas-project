@@ -1,11 +1,9 @@
 export class RigidBody {
-    constructor(x, y, width, height, game) {
-        this.game = game
+    constructor(x, y, width, height) {
         this.width = width;
         this.height = height;
         this.x = x;
         this.y = y;
-        this.ctx = this.game.ctx;
     }
   
     detectarColision (otroObjeto) {
@@ -42,8 +40,8 @@ export class RigidBody {
       return "colision";
     };
   
-    comprobarPosicionEnCanvas() {
-      if (this.x >= ctx.canvas.width - this.width) {
+    comprobarPosicionEnCanvas(width) {
+      if (this.x >= width - this.width) {
         return "derecha";
       }
       if (this.x <= 0) {
@@ -52,7 +50,7 @@ export class RigidBody {
       if (this.y <= 0) {
         return "arriba";
       }
-      if (this.y >= ctx.canvas.width - this.width) {
+      if (this.y >= width - this.width) {
         return "abajo";
       }
       return "dentro";
