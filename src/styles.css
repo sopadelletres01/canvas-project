@@ -5,6 +5,14 @@ body,html {
   margin: 0;
 }
 
+/* #door{
+  cursor: pointer;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background: transparent;
+} */
 
 .rotateLeft{
   transform: scaleX(-1);

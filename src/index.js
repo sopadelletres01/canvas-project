@@ -3,6 +3,7 @@ import { Game } from "../src/game.js";
 window.addEventListener("load", () => {
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
+  let staticGame = false;
   
   
   canvas.width = window.innerWidth
@@ -13,7 +14,8 @@ window.addEventListener("load", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     game.draw(ctx)
     game.update()
-    requestAnimationFrame(animate)
+    if(!staticGame) requestAnimationFrame(animate)
+    
   }
   animate()
 
