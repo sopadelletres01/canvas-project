@@ -7,7 +7,6 @@ export class SceneObject{
         this.height = height;
         this.box = box;
         this.updateStyles();
-        this.box.addEventListener("click",this.handleClick)
     }
 
     updateStyles(){
@@ -26,9 +25,7 @@ export class SceneObject{
         
     }
 
-    handleClick(){
-        alert("tusa")
-    }
+    
 
     generateImage(src) {
         let img = new Image()

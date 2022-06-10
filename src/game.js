@@ -30,14 +30,18 @@ export class Game {
     }
 
     update(){
-      console.log(this.input)
       this.player.update(this.input)
+    }
+
+    handleObjectClick(){
+      alert("Entras a la mansión sigilosamente...")
+      this.background = this.generateImage("https://res.cloudinary.com/dhdbik42m/image/upload/v1654857011/Sprites/casa-miedo-escaleras-fantasmas-puertas-calabazas-ilustracion-vector-dibujos-animados-halloween_273525-49_dokndu.jpg")
     }
 
     generateImage(src) {
       let img = new Image()
       img.src = src
-      console.dir(img)
+      console.dir("img",img)
       return img;
     }
 
@@ -46,6 +50,7 @@ export class Game {
       let door = document.getElementById("door");
       console.log("DOOR",door)
       let obj = new SceneObject(this.width/2,this.height/2,100,100,door)
-      
+      obj.box.addEventListener("click",this.handleObjectClick.bind(this))
     }
-  }
+
+}
