@@ -25,6 +25,11 @@ export class Scene{
     }
 
     getSceneInfo(){
+        console.log("OBJETO clone",this.objectInfo)
         return this.objectInfo;
+    }
+
+    setSceneInfo(info){
+        this.objectInfo = info;
     }
 }

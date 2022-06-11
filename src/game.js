@@ -67,14 +67,14 @@ export class Game {
     update(){
       //Comprobar que la info se elimine una vez que se cambia de escena (evitar bucle de cambio de escenas)
       let info = this.currentScene.getSceneInfo()
+      console.log("INFO",info)
       if ( info ){
-        console.log("INFO",info)
         let goto = info.goTo;
         let scene = this.scenes.find(scn => scn.id == goto)
         console.log("escena",scene)
         this.currentScene = scene
-        
       }
+      this.currentScene.setSceneInfo(null);
       this.player.update(this.input)
     }
 
@@ -98,6 +98,7 @@ export class Game {
         let index = this.scenes.indexOf(this.currentScene)
         if (index <= 0) return
         this.currentScene = this.scenes[index-1]
+        this.currentScene.setSceneInfo(null)
       })
     }
 
