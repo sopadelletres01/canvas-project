@@ -1,41 +1,68 @@
 import { InputHandler } from "../input.js";
 import { Player } from "./player.js";
-import { SceneObject } from "./sceneObject.js";
+import { Scene } from "./scene.js";
+//Importamos array de escenas
+const arrayDeEscenas = [
+  {
+    id: "hall",
+    background : document.getElementById("hall"),
+    objectArray : [
+      {
+        x : 200,
+        y : 300,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door"),
+      }
+    ]
+  },
+  {
+    id:"statue",
+    background : document.getElementById("statue"),
+    objectArray : [
+      {
+        x : 400,
+        y : 600,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door2"),
+      }
+    ]
+  }
+]
 
 export class Game {
     canvas;
     ctx;
     player;
-    staticGame;
     width;
     height;
     input;
-    IMAGE_SRC = "https://res.cloudinary.com/dhdbik42m/image/upload/v1654858143/Sprites/51d341b5a6001e5dea2a0ba08b175b60_jf8nfy.jpg"
+    currentScene;
     constructor(canvas,ctx){
       this.player = new Player(this)
       this.canvas = canvas;
       this.width = canvas.width;
       this.height = canvas.height;
       this.ctx = ctx;
-      this.input = new InputHandler()
-      this.image = document.getElementById("img")
-      this.background = this.generateImage(this.IMAGE_SRC);
-      this.sceneImages = this.generateSceneImages("posible array de objetos con sus propiedades y posicionamiento")
+      this.input = new InputHandler(canvas)
+      //Array de escenas (Objetos) con su background y objetos
+      this.scenes = this.loadScenes(arrayDeEscenas);
+      //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
+      this.currentScene = this.scenes[0]
+      this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
     }
 
     draw(ctx){
-      let background = this.background || this.image
+      let background = this.currentScene.background || this.background || this.image
       ctx.drawImage(background,0,0,this.width,this.height);   
       this.player.draw(ctx)
     }
 
     update(){
+      let info = this.currentScene.getSceneInfo()
+      console.log(info)
       this.player.update(this.input)
-    }
-
-    handleObjectClick(){
-      alert("Entras a la mansión sigilosamente...")
-      this.background = this.generateImage("https://res.cloudinary.com/dhdbik42m/image/upload/v1654857011/Sprites/casa-miedo-escaleras-fantasmas-puertas-calabazas-ilustracion-vector-dibujos-animados-halloween_273525-49_dokndu.jpg")
     }
 
     generateImage(src) {
@@ -45,12 +72,11 @@ export class Game {
       return img;
     }
 
-    generateSceneImages(array){
-      //array
-      let door = document.getElementById("door");
-      console.log("DOOR",door)
-      let obj = new SceneObject(this.width/2,this.height/2,100,100,door)
-      obj.box.addEventListener("click",this.handleObjectClick.bind(this))
+    loadScenes(array){
+      return array.map(scene => {
+        const {background,objectArray} = scene;
+        return new Scene(background,objectArray)
+      });
     }
 
 }

@@ -2,9 +2,9 @@ export class InputHandler {
     x;
     y;
 
-    constructor(){
+    constructor(canvas){
         
-        window.addEventListener('click', e=>{
+        canvas.addEventListener('click', e=>{
             this.x = e.clientX;
             this.y = e.clientY;
         })

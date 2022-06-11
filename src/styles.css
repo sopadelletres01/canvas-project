@@ -5,14 +5,26 @@ body,html {
   margin: 0;
 }
 
-/* #door{
+
+
+#return{
+  border: none;
   cursor: pointer;
   z-index: 2;
   width: 100px;
   height: 100px;
   position: absolute;
+  left: 0;
+  bottom: 0;
   background: transparent;
-} */
+}
+
+#return img{
+  position: relative;
+  width: 100%;
+  inset: 0;
+  background-color: white;
+}
 
 .rotateLeft{
   transform: scaleX(-1);

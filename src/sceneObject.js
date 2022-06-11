@@ -1,6 +1,8 @@
+import { config } from "./config.js";
+
 export class SceneObject{
     constructor(x,y,width,height,box){
-        this.debugMode = true;
+        this.debugMode = config.debugMode;
         this.x = x;
         this.y = y;
         this.width = width;

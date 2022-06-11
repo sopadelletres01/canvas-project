@@ -1,9 +1,10 @@
 import { Game } from "../src/game.js";
+import {config} from "./config.js"
 
 window.addEventListener("load", () => {
   const canvas = document.querySelector("#canvas");
   const ctx = canvas.getContext("2d");
-  let staticGame = false;
+  let staticGame = config.staticGame;
   
   
   canvas.width = window.innerWidth
