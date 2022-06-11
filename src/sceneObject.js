@@ -1,13 +1,14 @@
 import { config } from "./config.js";
 
 export class SceneObject{
-    constructor(x,y,width,height,box){
+    constructor(x,y,width,height,box,goTo){
         this.debugMode = config.debugMode;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.box = box;
+        this.goTo = goTo;
         this.updateStyles();
     }
 
