@@ -14,6 +14,8 @@ export class Scene{
     }
 
     generateSceneImages(objectArray){
+        console.log("OBJECTO",objectArray)
+        //se ejecuta siempre 
         return objectArray.map(obj => {
             const {x,y,height,width,box,goTo} = obj;
             box.addEventListener("click",()=>{
@@ -29,7 +31,17 @@ export class Scene{
         return this.objectInfo;
     }
 
-    setSceneInfo(info){
-        this.objectInfo = info;
+    draw(){
+        this.objects.forEach(obj => {
+            console.log("displayB",obj)
+            obj.box.style.display = "block"
+        });
+    }
+
+    clearSceneInfo(){
+        this.objects.forEach(obj => {
+            obj.box.style.display = "none"
+        });
+        this.objectInfo = null;
     }
 }

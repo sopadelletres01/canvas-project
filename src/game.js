@@ -27,7 +27,49 @@ const arrayDeEscenas = [
         height : 100,
         width : 100,
         box : document.getElementById("door2"),
-        goTo : "hall"
+        goTo : "statue2"
+      }
+    ]
+  },
+  {
+    id:"statue2",
+    background : document.getElementById("statue2"),
+    objectArray : [
+      {
+        x : 200,
+        y : 200,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door3"),
+        goTo : "stairs1"
+      }
+    ]
+  },
+  {
+    id:"stairs1",
+    background : document.getElementById("stairs1"),
+    objectArray : [
+      {
+        x : 600,
+        y : 200,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door4"),
+        goTo : "stairs2"
+      }
+    ]
+  },
+  {
+    id:"stairs2",
+    background : document.getElementById("stairs2"),
+    objectArray : [
+      {
+        x : 900,
+        y : 900,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door5"),
+        goTo : "statue"
       }
     ]
   }
@@ -62,19 +104,20 @@ export class Game {
       console.log("BACKGROUND",background)
       ctx.drawImage(background,0,0,this.width,this.height);   
       this.player.draw(ctx)
+      this.currentScene.draw()
     }
 
     update(){
       //Comprobar que la info se elimine una vez que se cambia de escena (evitar bucle de cambio de escenas)
       let info = this.currentScene.getSceneInfo()
       console.log("INFO",info)
-      if ( info ){
-        let goto = info.goTo;
-        let scene = this.scenes.find(scn => scn.id == goto)
+      if ( info && info.goTo){
+        let scene = this.scenes.find(scn => scn.id == info.goTo)
         console.log("escena",scene)
-        this.currentScene = scene
+        this.handleSceneChange(this.currentScene,scene,()=>{
+          this.currentScene = scene
+        })
       }
-      this.currentScene.setSceneInfo(null);
       this.player.update(this.input)
     }
 
@@ -97,9 +140,17 @@ export class Game {
       this.returnButton.addEventListener("click",(e)=>{
         let index = this.scenes.indexOf(this.currentScene)
         if (index <= 0) return
-        this.currentScene = this.scenes[index-1]
-        this.currentScene.setSceneInfo(null)
+        let scene = this.scenes[index-1]
+        this.handleSceneChange(this.currentScene,scene,()=>{
+          this.currentScene = scene
+        })
       })
+    }
+
+    handleSceneChange(prevScene,nextScene,action){
+      prevScene.clearSceneInfo()
+      action()
+      nextScene.clearSceneInfo()
     }
 
 }
