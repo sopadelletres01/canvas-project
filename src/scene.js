@@ -18,12 +18,12 @@ export class Scene{
         console.log("OBJECTO",objectArray)
         //se ejecuta siempre 
         return objectArray.map(obj => {
-            const {x,y,height,width,box,goTo} = obj;
+            const {x,y,height,width,box,goTo,item} = obj;
             box.addEventListener("click",()=>{
                 console.log("OBJECTTS",obj)
                 this.handleObjectClick(this,obj)
             })
-            return new SceneObject(x,y,height,width,box,goTo)
+            return new SceneObject(x,y,height,width,box,goTo,item)
         });
     }
 
@@ -44,5 +44,14 @@ export class Scene{
             obj.box.style.display = "none"
         });
         this.objectInfo = null;
+    }
+
+    changeDisplay(property){
+
+    }
+
+    removeItem(item){
+        let itemToRemove = this.objects.find(obj=>obj?.item === item)
+        this.objects.pop(itemToRemove)
     }
 }

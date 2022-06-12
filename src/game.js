@@ -8,10 +8,10 @@ const arrayDeEscenas = [
     background : document.getElementById("hall"),
     objectArray : [
       {
-        x : 100,
-        y : 300,
-        height : 100,
-        width : 100,
+        x : 840,
+        y : 350,
+        height : 250,
+        width : 200,
         box : document.getElementById("door"),
         goTo : "statue"
       }
@@ -28,6 +28,14 @@ const arrayDeEscenas = [
         width : 100,
         box : document.getElementById("door2"),
         goTo : "statue2"
+      },
+      {
+        x : 1300,
+        y : 320,
+        height : 40,
+        width : 90,
+        box : document.getElementById("key"),
+        item : "goldenkey"
       }
     ]
   },
@@ -135,12 +143,20 @@ export class Game {
       //Comprobar que la info se elimine una vez que se cambia de escena (evitar bucle de cambio de escenas)
       let info = this.currentScene.getSceneInfo()
       console.log("INFO",info)
-      if ( info && info.goTo){
-        let scene = this.scenes.find(scn => scn.id == info.goTo)
-        console.log("escena",scene)
-        this.handleSceneChange(this.currentScene,scene,()=>{
-          this.currentScene = scene
-        })
+      if ( info ){
+        if ( info.goTo ){
+          let scene = this.scenes.find(scn => scn.id == info.goTo)
+          console.log("escena",scene)
+          this.handleSceneChange(this.currentScene,scene,()=>{
+            this.currentScene = scene
+          })
+        }
+        if ( info.item ){
+          this.handleSceneChange(this.currentScene,this.currentScene,()=>{
+            this.player.addItem(info.item)
+            this.currentScene.removeItem(info.item)
+          })
+        }
       }
       this.player.update(this.input)
     }

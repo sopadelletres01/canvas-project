@@ -46,6 +46,15 @@ export class Player{
         return img;
       }
     
+    addItem(item){
+        this.inventory.push(item)
+        console.log("inventory",this.inventory)
+    }
+
+    removeItem(item){
+        this.inventory.push(item)
+    }
+
     /* borrar() {
         ctx.clearRect(this.x, this.y, this.width, this.height);
     } */

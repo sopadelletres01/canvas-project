@@ -19,6 +19,11 @@ body,html {
   background: transparent;
 }
 
+#key{
+  transform: rotate(-270deg);
+  filter: brightness(.5);
+}
+
 #return img{
   position: relative;
   width: 100%;

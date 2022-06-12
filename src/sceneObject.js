@@ -1,14 +1,15 @@
 import { config } from "./config.js";
 
 export class SceneObject{
-    constructor(x,y,width,height,box,goTo){
+    constructor(x,y,height,width,box,goTo,item){
         this.debugMode = config.debugMode;
         this.x = x;
         this.y = y;
-        this.width = width;
         this.height = height;
+        this.width = width;
         this.box = box;
         this.goTo = goTo;
+        this.item = item;
         this.updateStyles();
     }
 
@@ -18,8 +19,8 @@ export class SceneObject{
         Object.assign(this.box.style,{
             cursor: "pointer",
             zIndex: "2",
-            width: this.width+"px",
             height: this.height+"px",
+            width: this.width+"px",
             position: "absolute",
             background: this.debugMode ? "red" : "transparent",
             left: this.x+"px",
