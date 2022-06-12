@@ -2,8 +2,9 @@ import { SceneObject } from "./sceneObject.js"
 
 export class Scene{
     objectInfo;
-    constructor(background,objectArray,id){
+    constructor(background,objectArray,id,returnTo){
         this.id = id;
+        this.returnTo = returnTo;
         this.background = background;
         this.objects = this.generateSceneImages(objectArray)
     }

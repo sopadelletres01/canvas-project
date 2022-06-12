@@ -12,6 +12,7 @@ export class Player{
         this.destinationX = this.x;
         this.destinationY = this.y;
         this.image = this.generateImage(this.IMAGE_SRC);
+        this.inventory = []
     }
 
     draw(ctx){

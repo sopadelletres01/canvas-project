@@ -42,11 +42,20 @@ const arrayDeEscenas = [
         width : 100,
         box : document.getElementById("door3"),
         goTo : "stairs1"
+      },
+      {
+        x : 800,
+        y : 200,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door6"),
+        goTo : "stairs1l"
       }
     ]
   },
   {
     id:"stairs1",
+    returnTo : "statue2",
     background : document.getElementById("stairs1"),
     objectArray : [
       {
@@ -55,6 +64,21 @@ const arrayDeEscenas = [
         height : 100,
         width : 100,
         box : document.getElementById("door4"),
+        goTo : "stairs2"
+      }
+    ]
+  },
+  {
+    id:"stairs1l",
+    returnTo : "statue2",
+    background : document.getElementById("stairs1l"),
+    objectArray : [
+      {
+        x : 600,
+        y : 200,
+        height : 100,
+        width : 100,
+        box : document.getElementById("door7"),
         goTo : "stairs2"
       }
     ]
@@ -69,7 +93,7 @@ const arrayDeEscenas = [
         height : 100,
         width : 100,
         box : document.getElementById("door5"),
-        goTo : "statue"
+        item : "key"
       }
     ]
   }
@@ -130,8 +154,8 @@ export class Game {
 
     loadScenes(array){
       return array.map(scene => {
-        const {background,objectArray,id} = scene;
-        return new Scene(background,objectArray,id)
+        const {background,objectArray,id,returnTo} = scene;
+        return new Scene(background,objectArray,id,returnTo)
       });
     }
 
@@ -140,7 +164,13 @@ export class Game {
       this.returnButton.addEventListener("click",(e)=>{
         let index = this.scenes.indexOf(this.currentScene)
         if (index <= 0) return
+        
         let scene = this.scenes[index-1]
+
+        console.log("actual",this.currentScene)
+        if ( this.currentScene.returnTo ){
+          scene = this.scenes.find(scn => scn.id == this.currentScene.returnTo)
+        }
         this.handleSceneChange(this.currentScene,scene,()=>{
           this.currentScene = scene
         })
