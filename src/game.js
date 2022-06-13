@@ -30,7 +30,6 @@ export class Game {
 
     draw(ctx){
       let background = this.currentScene.background || this.background || this.image
-      console.log("BACKGROUND",background)
       ctx.drawImage(background,0,0,this.width,this.height);   
       this.player.draw(ctx)
       this.currentScene.draw()
@@ -38,15 +37,31 @@ export class Game {
 
     update(){
       //Comprobar que la info se elimine una vez que se cambia de escena (evitar bucle de cambio de escenas)
+      //Intentar refactorizar el if statement
+      //Variable temporal para no perder la escena anterior
+      let previousScene = this.currentScene;
       let info = this.currentScene.getSceneInfo()
       console.log("INFO",info)
       if ( info ){
         if ( info.goTo ){
           let scene = this.scenes.find(scn => scn.id == info.goTo)
-          console.log("escena",scene)
           this.handleSceneChange(this.currentScene,scene,()=>{
             this.currentScene = scene
           })
+          //Una vez cambiamos de escena, antes de renderizarla, comprobamos que la condicion se cumpla
+          //Si no se cumple, volvemos a la escena anterior
+          let newInfo = this.currentScene.getSceneInfo()
+          if ( newInfo?.condition && !this.checkSceneCondition(newInfo?.condition)){
+            this.handleSceneChange(this.currentScene,previousScene,()=>{
+              this.currentScene = previousScene
+            })
+            console.log("CAGASTE")
+          }
+          else if ( this.checkSceneCondition(newInfo?.condition) ){
+            this.handleSceneChange(this.currentScene,this.currentScene,()=>{
+              console.log("tusa, usando... ",newInfo.condition)
+            })
+          }
         }
         if ( info.item ){
           this.handleSceneChange(this.currentScene,this.currentScene,()=>{
@@ -58,6 +73,13 @@ export class Game {
       this.player.update(this.input)
     }
 
+    checkSceneCondition(condition){
+      console.log("condition",condition)
+      let check = this.player.inventory.includes(condition)
+      console.log("check",check)
+      return check
+    }
+
     generateImage(src) {
       let img = new Image()
       img.src = src
@@ -67,8 +89,8 @@ export class Game {
 
     loadScenes(array){
       return array.map(scene => {
-        const {background,objectArray,id,returnTo} = scene;
-        return new Scene(background,objectArray,id,returnTo)
+        const {background,objectArray,id,returnTo,condition} = scene;
+        return new Scene(background,objectArray,id,returnTo,condition)
       });
     }
 
@@ -80,7 +102,6 @@ export class Game {
         
         let scene = this.scenes[index-1]
 
-        console.log("actual",this.currentScene)
         if ( this.currentScene.returnTo ){
           scene = this.scenes.find(scn => scn.id == this.currentScene.returnTo)
         }

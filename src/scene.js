@@ -2,10 +2,11 @@ import { SceneObject } from "./sceneObject.js"
 
 export class Scene{
     objectInfo;
-    constructor(background,objectArray,id,returnTo){
+    constructor(background,objectArray,id,returnTo,condition){
         this.id = id;
         this.returnTo = returnTo;
         this.background = background;
+        this.condition = condition;
         this.objects = this.generateSceneImages(objectArray)
     }
 
@@ -28,8 +29,8 @@ export class Scene{
     }
 
     getSceneInfo(){
-        console.log("OBJETO clone",this.objectInfo)
-        return this.objectInfo;
+        console.log("OBJETO clone",this.objectInfo) 
+        return this.condition ? {...this.objectInfo,condition:this.condition} : this.objectInfo
     }
 
     draw(){
