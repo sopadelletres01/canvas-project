@@ -23,7 +23,7 @@ export class Game {
       //Array de escenas (Objetos) con su background y objetos
       this.scenes = this.loadScenes(arrayDeEscenas);
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
-      this.currentScene = this.scenes[0]
+      this.currentScene = this.scenes[3]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
     }

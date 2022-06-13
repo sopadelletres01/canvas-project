@@ -1,7 +1,7 @@
 import { config } from "./config.js";
 
 export class SceneObject{
-    constructor(x,y,height,width,box,goTo,item){
+    constructor(x,y,height,width,box,goTo,item,requiredItem){
         this.debugMode = config.debugMode;
         this.x = x;
         this.y = y;
@@ -10,6 +10,7 @@ export class SceneObject{
         this.box = box;
         this.goTo = goTo;
         this.item = item;
+        this.requiredItem = requiredItem;
         this.updateStyles();
     }
 

@@ -5,12 +5,102 @@ const arrayDeEscenas = [
     objectArray: [
       {
         x: 840,
-        y: 350,
+        y: 150,
         height: 250,
         width: 200,
         box: document.getElementById("door"),
-        goTo: "statue"
+        goTo: "statue2"
+      },
+      {
+        x: 1550,
+        y: 450,
+        height: 350,
+        width: 250,
+        box: document.getElementById("door15"),
+        goTo: "frontdoor2"
       }
+    ]
+  },
+  {
+    id: "frontdoor2",
+    background: document.getElementById("frontdoor2"),
+    objectArray: [
+      {
+        x: 1340,
+        y: 450,
+        height: 250,
+        width: 200,
+        box: document.getElementById("door16"),
+        goTo: "rightwall"
+      },
+      {
+        x: 340,
+        y: 450,
+        height: 250,
+        width: 200,
+        box: document.getElementById("door19"),
+        goTo: "frontdoor2zoom"
+      },
+    ]
+  },
+  {
+    id: "frontdoor2zoom",
+    background: document.getElementById("frontdoor2zoom"),
+    objectArray: [
+      {
+        x: 1340,
+        y: 450,
+        height: 250,
+        width: 200,
+        box: document.getElementById("door18"),
+        goTo: "rightwall"
+      },
+    ]
+  },
+  {
+    id: "rightwall",
+    background: document.getElementById("rightwall"),
+    returnTo : "frontdoor2",
+    objectArray: [
+      {
+        x: 680,
+        y: 650,
+        height: 100,
+        width: 70,
+        box: document.getElementById("candle"),
+        item: "candle"
+      },
+    ]
+  },
+  {
+    id: "statue2",
+    background: document.getElementById("statue2"),
+    returnTo : "hall",
+    objectArray: [
+      {
+        x: 200,
+        y: 500,
+        height: 400,
+        width: 300,
+        box: document.getElementById("door6"),
+        goTo: "stairs1l"
+      },
+      {
+        x: 900,
+        y: 400,
+        height: 300,
+        width: 300,
+        box: document.getElementById("door13"),
+        goTo: "statue"
+      },
+      {
+        x: 1600,
+        y: 500,
+        height: 400,
+        width: 300,
+        box: document.getElementById("door3"),
+        goTo: "stairs1"
+      },
     ]
   },
   {
@@ -18,12 +108,12 @@ const arrayDeEscenas = [
     background: document.getElementById("statue"),
     objectArray: [
       {
-        x: 400,
+        x: 750,
         y: 600,
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 300,
         box: document.getElementById("door2"),
-        goTo: "statue2"
+        goTo: "statuezoom"
       },
       {
         x: 1300,
@@ -36,25 +126,17 @@ const arrayDeEscenas = [
     ]
   },
   {
-    id: "statue2",
-    background: document.getElementById("statue2"),
+    id: "statuezoom",
+    background: document.getElementById("statuezoom"),
     objectArray: [
       {
-        x: 200,
-        y: 200,
+        x: 400,
+        y: 600,
         height: 100,
         width: 100,
-        box: document.getElementById("door3"),
-        goTo: "stairs1"
+        box: document.getElementById("door14"),
+        requiredItem: "candle"
       },
-      {
-        x: 800,
-        y: 200,
-        height: 100,
-        width: 100,
-        box: document.getElementById("door6"),
-        goTo: "stairs1l"
-      }
     ]
   },
   {
