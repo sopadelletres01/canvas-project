@@ -47,12 +47,16 @@ export class Scene{
         this.objectInfo = null;
     }
 
-    changeDisplay(property){
-
-    }
-
     removeItem(item){
         let itemToRemove = this.objects.find(obj=>obj?.item === item)
         this.objects.pop(itemToRemove)
+    }
+
+    addItem(item){
+        console.log("BOOX",this.objectInfo)
+        //let itemToFind = this.objects.find(obj=>obj?.requiredItem === item)
+        this.objectInfo.box = document.getElementById(item)
+        this.objectInfo.box.style.display="block"
+        this.objects.push(this.objectInfo)
     }
 }

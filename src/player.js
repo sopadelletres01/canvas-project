@@ -52,9 +52,12 @@ export class Player{
     }
 
     removeItem(item){
-        this.inventory.push(item)
+        this.inventory = this.inventory.filter(i=>i !== item)
     }
 
+    checkItem(item){
+        return this.inventory.includes(item)
+    }
     /* borrar() {
         ctx.clearRect(this.x, this.y, this.width, this.height);
     } */

@@ -20,10 +20,11 @@ export class Game {
       this.height = canvas.height;
       this.ctx = ctx;
       this.input = new InputHandler(canvas)
+      this.gameOver = false;
       //Array de escenas (Objetos) con su background y objetos
       this.scenes = this.loadScenes(arrayDeEscenas);
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
-      this.currentScene = this.scenes[3]
+      this.currentScene = this.scenes[0]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
     }
@@ -68,6 +69,17 @@ export class Game {
             this.player.addItem(info.item)
             this.currentScene.removeItem(info.item)
           })
+        }
+        console.log("REQUIRED",info?.requiredItem)
+        console.log("Check",this.player.checkItem(info?.requiredItem))
+        if ( info?.requiredItem && this.player.checkItem(info.requiredItem) ){
+          console.log("GUcci")
+          console.log("infoitem",info)
+          this.player.removeItem(info.item)
+          this.currentScene.addItem(info.requiredItem)
+          this.currentScene.clearSceneInfo()
+
+
         }
       }
       this.player.update(this.input)
@@ -115,6 +127,10 @@ export class Game {
       prevScene.clearSceneInfo()
       action()
       nextScene.clearSceneInfo()
+    }
+
+    stop(){
+      this.gameOver = true
     }
 
 }
