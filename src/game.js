@@ -22,6 +22,7 @@ export class Game {
       this.ctx = ctx;
       this.input = new InputHandler(canvas)
       this.gameOver = false;
+      this.gameWin = false;
       //Array de escenas (Objetos) con su background y objetos
       this.scenes = this.loadScenes(arrayDeEscenas);
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
@@ -62,6 +63,11 @@ export class Game {
             console.log("CAGASTE")
           }
           else if ( this.checkSceneCondition(newInfo?.condition) ){
+            //Condicion victoria
+            if (newInfo.condition === "goldenkey") {
+              this.gameWin = true;
+              this.stop()
+            }
             this.handleSceneChange(this.currentScene,this.currentScene,()=>{
               console.log("tusa, usando... ",newInfo.condition)
             })
@@ -140,13 +146,16 @@ export class Game {
     }
 
     checkEnd(){
-      return this.gameOver;
+      return this.gameOver || this.gameWin;
     }
 
     stop(){
-      console.log("entraaaaaa")
+      if ( this.gameWin ) {
+        alert("Te sacaste la vergota mirey")
+        return
+      }
       this.gameOver = true
-      console.log("gameover",this.gameOver)
+      alert("Cagaste bien fuerte")
     }
 
 }
