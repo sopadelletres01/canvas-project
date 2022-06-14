@@ -4,6 +4,14 @@ const arrayDeEscenas = [
     background: document.getElementById("hall"),
     objectArray: [
       {
+        x: 150,
+        y: 450,
+        height: 350,
+        width: 250,
+        box: document.getElementById("door23"),
+        goTo: "frontdoor2l"
+      },
+      {
         x: 850,
         y: 380,
         height: 250,
@@ -40,6 +48,37 @@ const arrayDeEscenas = [
         width: 200,
         box: document.getElementById("door19"),
         goTo: "frontdoor2zoom"
+      },
+    ]
+  },
+  {
+    id: "frontdoor2l",
+    background: document.getElementById("frontdoor2l"),
+    returnTo:"hall",
+    audio: document.getElementById("corridor"),
+    objectArray: [
+      {
+        x: 900,
+        y: 250,
+        height: 450,
+        width: 300,
+        box: document.getElementById("door22"),
+        goTo: "jumpscare2"
+      },
+    ]
+  },
+  {
+    id: "jumpscare2",
+    background: document.getElementById("jumpscare2"),
+    returnTo:"hall",
+    audio: document.getElementById("jumpscare2audio"),
+    objectArray: [
+      {
+        x: 900,
+        y: 250,
+        height: 450,
+        width: 300,
+        box: document.getElementById("door22"),
       },
     ]
   },

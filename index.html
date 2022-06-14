@@ -7,8 +7,23 @@
   </head>
 
   <body>
+    <!--UI-->
+    <button id="return" ><img src="./src/images/return.png"/></button>
+    <div id="countdownWrapper">
+      <progress value="0" max="60" id="progressBar"></progress>
+      <span id="countdown">60</span><span> Seconds Left</span>
+    </div>
+    <div id="message">
+      <span>Lo último que recuerdas es estar en el coche a las afueras de la ciudad. Solo sabes es que tienes que escapar de aqui... escuchas ruidos y sientes que no estas solo...Apresurate</span>
+    </div>
+    <!--UI-->
+    <!--Sounds-->
+    <audio id="corridor"><source src="./src/sounds/corridor.mp3" type="audio/mp3"></source></audio>
+    <audio id="jumpscare2audio"><source src="./src/sounds/wrongway.mp3" type="audio/mp3"></source></audio>
+    <!--Sounds-->
     <img style="display:none" src="./src/images/Scenes/hall5.jpg" id="hall"/>
     <img style="display:none" src="./src/images/Scenes/frontdoor2.jpg" id="frontdoor2"/>
+    <img style="display:none" src="./src/images/Scenes/frontdoor2l.jpg" id="frontdoor2l"/>
     <img style="display:none" src="./src/images/Scenes/frontdoor2zoom.jpg" id="frontdoor2zoom"/>
     <img style="display:none" src="./src/images/Scenes/rightwall.jpg" id="rightwall"/>
     <img style="display:none" src="./src/images/Scenes/statue1.jpg" id="statue"/>
@@ -22,7 +37,7 @@
     <img style="display:none" src="./src/images/Scenes/leftdoor.jpg" id="leftdoor"/>
     <img style="display:none" src="./src/images/Scenes/frontdoor.png" id="frontdoor"/>
     <img style="display:none" src="./src/images/Scenes/mainroom.jpg" id="mainroom"/>
-    <button id="return" ><img src="./src/images/return.png"/></button>
+    <img style="display:none" src="./src/images/scarejump2.jpg" id="jumpscare2"/>
     <div style="display:none" id="door" ></div>
     <div style="display:none" id="door2" ></div>
     <div style="display:none" id="door3" ></div>
@@ -44,6 +59,8 @@
     <div style="display:none" id="door19" ></div>
     <div style="display:none" id="door20" ></div>
     <div style="display:none" id="door21" ></div>
+    <div style="display:none" id="door22" ></div>
+    <div style="display:none" id="door23" ></div>
     <!--Items--> 
     <img style="display:none" src="./src/images/goldkey.jpg" id="key" ></img>
     <img style="display:none" src="./src/images/candle2.png" id="candle" ></img>

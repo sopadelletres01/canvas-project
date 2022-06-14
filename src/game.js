@@ -4,6 +4,7 @@ import { Scene } from "./scene.js";
 //Importamos array de escenas
 import { arrayDeEscenas } from "./data.js";
 import { Key } from "./key.js";
+import { Countdown } from "./countdown.js";
 
 export class Game {
     canvas;
@@ -28,20 +29,19 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
       this.key = new Key()
-      this.timeCounter = 60000
+      this.timer = new Countdown(this.stop.bind(this),60)
       this.init()
     }
 
     init(){
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
-      setTimeout(this.stop.bind(this),this.timeCounter)
     }
 
     draw(ctx){
       let background = this.currentScene.background || this.background || this.image
       ctx.drawImage(background,0,0,this.width,this.height);   
-      this.player.draw(ctx)
+      //this.player.draw(ctx)
       this.currentScene.draw()
     }
 
@@ -96,7 +96,7 @@ export class Game {
 
         }
       }
-      this.player.update(this.input)
+      //this.player.update(this.input)
     }
 
     setKeyScene(){
@@ -122,8 +122,8 @@ export class Game {
 
     loadScenes(array){
       return array.map(scene => {
-        const {background,objectArray,id,returnTo,condition} = scene;
-        return new Scene(background,objectArray,id,returnTo,condition)
+        const {background,objectArray,id,returnTo,condition,audio} = scene;
+        return new Scene(background,objectArray,id,returnTo,condition,audio)
       });
     }
 

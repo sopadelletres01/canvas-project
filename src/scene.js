@@ -2,8 +2,9 @@ import { SceneObject } from "./sceneObject.js"
 
 export class Scene{
     objectInfo;
-    constructor(background,objectArray,id,returnTo,condition){
+    constructor(background,objectArray,id,returnTo,condition,audio){
         this.id = id;
+        this.audio = audio;
         this.returnTo = returnTo;
         this.background = background;
         this.condition = condition;
@@ -34,6 +35,9 @@ export class Scene{
     }
 
     draw(){
+        console.dir("audio",this.audio)
+        if(this.audio) this.audio.play()
+
         this.objects.forEach(obj => {
             console.log("displayB",obj)
             obj.box.style.display = "block"
@@ -41,6 +45,11 @@ export class Scene{
     }
 
     clearSceneInfo(){
+        if(this.audio) {
+            console.log("audioo",this.audio)
+            this.audio.currentTime = 0
+            this.audio.pause()
+        }
         this.objects.forEach(obj => {
             obj.box.style.display = "none"
         });
