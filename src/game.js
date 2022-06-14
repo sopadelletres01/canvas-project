@@ -27,7 +27,6 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
       this.key = new Key()
-      this.setKeyScene()
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
     }
@@ -81,7 +80,7 @@ export class Game {
           this.player.removeItem(info.item)
           this.currentScene.addItem(info.requiredItem)
           this.currentScene.clearSceneInfo()
-
+          this.setKeyScene()
 
         }
       }
