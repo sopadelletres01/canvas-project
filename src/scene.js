@@ -47,6 +47,14 @@ export class Scene{
         this.objectInfo = null;
     }
 
+    setKey(keyObject){
+        const {x,y,height,width,box,goTo,item,requiredItem} = keyObject;
+        this.objects.push(new SceneObject(x,y,height,width,box,goTo,item,requiredItem))
+        box.addEventListener("click",()=>{
+            this.handleObjectClick(this,{...keyObject})
+        })
+    }
+
     removeItem(item){
         let itemToRemove = this.objects.find(obj=>obj?.item === item)
         this.objects.pop(itemToRemove)

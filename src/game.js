@@ -3,6 +3,7 @@ import { Player } from "./player.js";
 import { Scene } from "./scene.js";
 //Importamos array de escenas
 import { arrayDeEscenas } from "./data.js";
+import { Key } from "./key.js";
 
 export class Game {
     canvas;
@@ -25,6 +26,8 @@ export class Game {
       this.scenes = this.loadScenes(arrayDeEscenas);
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
+      this.key = new Key()
+      this.setKeyScene()
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
     }
@@ -83,6 +86,13 @@ export class Game {
         }
       }
       this.player.update(this.input)
+    }
+
+    setKeyScene(){
+      let scene = this.scenes.find(scn=>scn.id === this.key.scene)
+      scene.setKey(this.key)
+      console.log("scenerand",scene)
+      console.log("scenekey",this.key)
     }
 
     checkSceneCondition(condition){

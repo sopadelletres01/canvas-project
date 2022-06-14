@@ -115,14 +115,6 @@ const arrayDeEscenas = [
         box: document.getElementById("door2"),
         goTo: "statuezoom"
       },
-      {
-        x: 1300,
-        y: 320,
-        height: 40,
-        width: 90,
-        box: document.getElementById("key"),
-        item: "goldenkey"
-      }
     ]
   },
   {
