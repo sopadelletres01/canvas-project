@@ -5,6 +5,7 @@ import { Scene } from "./scene.js";
 import { arrayDeEscenas } from "./data.js";
 import { Key } from "./key.js";
 import { Countdown } from "./countdown.js";
+import { Message } from "./writer.js";
 
 export class Game {
     canvas;
@@ -30,13 +31,17 @@ export class Game {
       this.currentScene = this.scenes[0]
       this.key = new Key()
       //this.timer = new Countdown(this.stop.bind(this),60)
-      
+      this.message = new Message(`Lo último que recuerdas es estar en el coche a las afueras de la ciudad. 
+      Lo único que sabes es que tienes que escapar de aquí...
+      escuchas ruidos y sientes que no estas solo...
+      Apresúrate`)
       this.init()
     }
 
     init(){
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
+      this.message.show()
     }
 
     draw(ctx){
