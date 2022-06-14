@@ -10,12 +10,13 @@ window.addEventListener("load", () => {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   const game = new Game(canvas,ctx)
+  
   function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     game.draw(ctx)
     game.update()
-    console.log("over",game.gameOver)
-    if(!staticGame && !game.gameOver) requestAnimationFrame(animate)
+    console.log("over",game.checkEnd())
+    if(!staticGame && !game.checkEnd()) requestAnimationFrame(animate)
     
   }
 

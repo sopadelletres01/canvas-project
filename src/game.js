@@ -29,6 +29,7 @@ export class Game {
       this.key = new Key()
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
+      setTimeout(this.stop.bind(this),5000)
     }
 
     draw(ctx){
@@ -138,8 +139,14 @@ export class Game {
       nextScene.clearSceneInfo()
     }
 
+    checkEnd(){
+      return this.gameOver;
+    }
+
     stop(){
+      console.log("entraaaaaa")
       this.gameOver = true
+      console.log("gameover",this.gameOver)
     }
 
 }

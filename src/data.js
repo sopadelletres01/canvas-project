@@ -137,9 +137,9 @@ const arrayDeEscenas = [
     background: document.getElementById("stairs1"),
     objectArray: [
       {
-        x: 600,
-        y: 200,
-        height: 100,
+        x: 500,
+        y: 600,
+        height: 700,
         width: 100,
         box: document.getElementById("door4"),
         goTo: "stairs2"
