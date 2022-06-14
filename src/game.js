@@ -28,9 +28,14 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
       this.key = new Key()
+      this.timeCounter = 60000
+      this.init()
+    }
+
+    init(){
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
-      setTimeout(this.stop.bind(this),5000)
+      setTimeout(this.stop.bind(this),this.timeCounter)
     }
 
     draw(ctx){
