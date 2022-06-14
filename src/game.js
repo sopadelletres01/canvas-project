@@ -29,7 +29,8 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
       this.key = new Key()
-      this.timer = new Countdown(this.stop.bind(this),60)
+      //this.timer = new Countdown(this.stop.bind(this),60)
+      
       this.init()
     }
 
