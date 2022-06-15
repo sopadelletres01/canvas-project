@@ -6,6 +6,7 @@ import { arrayDeEscenas } from "./data.js";
 import { Key } from "./key.js";
 import { Countdown } from "./countdown.js";
 import { Message } from "./writer.js";
+import { config } from "./config.js";
 
 export class Game {
     canvas;
@@ -45,12 +46,8 @@ export class Game {
       this.message.container.addEventListener("click",()=>{
         this.message.handleClose()
       })
-      /* function playAudio(){
-        this.mainAudio.oncanplay = function(){playAudio}
-      } */
       this.message.button.addEventListener("click",()=>{
-        console.log(this.mainAudio)
-        this.mainAudio.play()
+        this.playAudio(this.mainAudio)
       })
       this.message.show()
     }
@@ -110,6 +107,10 @@ export class Game {
       //this.player.update(this.input)
     }
 
+    playAudio(audio){
+      if(config.audioPlay) audio.play()
+    }
+
     setKeyScene(){
       let scene = this.scenes.find(scn=>scn.id === this.key.scene)
       scene.setKey(this.key)
@@ -151,7 +152,7 @@ export class Game {
     }
 
     handleSceneChange(prevScene,nextScene,action){
-      this.mainAudio.play()
+      this.playAudio(this.mainAudio)
       prevScene.clearSceneInfo()
       action()
       nextScene.clearSceneInfo()
