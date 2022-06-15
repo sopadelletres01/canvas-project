@@ -8,6 +8,11 @@ import { Countdown } from "./countdown.js";
 import { Message } from "./writer.js";
 import { config } from "./config.js";
 
+const message = `Es de noche y estabas de vuelta de tu largo viaje. 
+Tu coche se ha quedado sin combustible y no hay ninguna gasolinera cerca.
+Hay una fuente de luz cerca de ti, te fijas y parece una antigua mansión.
+ Parece que hay gente dentro, puede que tengan combustible...`
+
 export class Game {
     canvas;
     ctx;
@@ -31,10 +36,7 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.key = new Key()
       this.mainAudio = document.getElementById("main")
-      this.message = new Message(`Lo último que recuerdas es estar en el coche a las afueras de la ciudad. 
-      Lo único que sabes es que tienes que escapar de aquí...
-      escuchas ruidos y sientes que no estas solo...
-      Apresúrate`)
+      this.message = new Message(message)
       this.introScene()
     }
 
@@ -44,7 +46,7 @@ export class Game {
         this.message.handleClose()
         this.init()
       })
-      this.ctx.drawImage(document.getElementById("frontdoor2"),0,0)
+      this.ctx.drawImage(document.getElementById("forest"),0,0,this.width,this.height)
       this.message.show()
     }
 
