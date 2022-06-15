@@ -35,7 +35,10 @@ export class Scene{
 
 
     draw(){
-        if(this.audio) this.audio.play()
+        if(this.audio) {
+            if(this.audio.id === "secret") this.audio.volume = 0.1
+            this.audio.play()
+        }
         this.objects.forEach(obj => {
             obj.box.style.display = "block"
         });

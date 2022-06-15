@@ -28,6 +28,7 @@ export class Game {
     input;
     currentScene;
     returnButton;
+    timer;
     constructor(canvas,ctx){
       this.player = new Player(this)
       this.canvas = canvas;
@@ -37,7 +38,7 @@ export class Game {
       this.input = new InputHandler(canvas)
       this.gameOver = false;
       this.gameWin = false;
-      this.secondsToEnd = 60
+      this.secondsToEnd = config.quickGame ? 5 : 60 * 5
       //Array de escenas (Objetos) con su background y objetos
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.key = new Key()
@@ -156,9 +157,13 @@ export class Game {
     setupUI(){
       let seconds = this.secondsToEnd
       this.returnButton = document.getElementById("return")
+      this.restartButton = document.getElementById("restart")
       this.timer = new Countdown(this.stop.bind(this),seconds || 60)
       this.returnButton.style.display = "block"
       this.timer.container.style.display = "block"
+      this.restartButton.addEventListener("click",()=>{
+        window.location.reload()
+      })
       this.returnButton.addEventListener("click",(e)=>{
         let index = this.scenes.indexOf(this.currentScene)
         if (index <= 0) return
@@ -190,13 +195,33 @@ export class Game {
       return this.gameOver || this.gameWin;
     }
 
+    win(){
+
+      alert("Te sacaste la vergota mirey")
+    }
+
+    lose(){
+      this.mainAudio.pause()
+      this.currentScene.background = document.getElementById("lose")
+      this.mainAudio = document.getElementById("jumpscare2audio")
+      this.mainAudio.play()
+      this.returnButton.style.display = "none"
+      this.timer.container.style.display = "none"
+      this.hint.container.style.display = "none"
+      console.log(this.currentScene)
+      this.currentScene.objects.forEach(element => {
+        element.box.remove()
+      });
+      this.restartButton.style.display = "block"
+      this.gameOver = true
+    }
+
     stop(){
       if ( this.gameWin ) {
-        alert("Te sacaste la vergota mirey")
+        this.win()
         return
       }
-      this.gameOver = true
-      alert("Cagaste bien fuerte")
+      this.lose()
     }
 
 }

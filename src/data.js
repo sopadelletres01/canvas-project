@@ -306,7 +306,8 @@ const arrayDeEscenas = [
         goTo: "mainroom"
       }
     ]
-  }
+  },
+  
 ]
 
 export { arrayDeEscenas };

@@ -9,9 +9,10 @@
   <body>
     <!--UI-->
     <button style="display: none;" id="return" ><img src="./src/images/return.png"/></button>
+    <button style="display: none;" id="restart" >Restart Game</button>
     <div style="display: none;" id="countdownWrapper">
-      <progress value="0" max="60" id="progressBar"></progress>
-      <span id="countdown">60</span><span> Seconds Left</span>
+      <progress value="0" max="5" id="progressBar"></progress>
+      <span id="countdown">5</span><span> Seconds Left</span>
     </div>
     <div id="message">
       <p></p>
@@ -29,6 +30,7 @@
     <audio id="secretdone"><source src="./src/sounds/secretdone.mp3" type="audio/mp3"></source></audio>
     <!--Sounds-->
     <img style="display:none" src="./src/images/forestmansion2.jpg" id="forest"/>
+    <img style="display:none" src="./src/images/scarejump1.jpg" id="lose"/>
 
     <img style="display:none" src="./src/images/Scenes/hall5.jpg" id="hall"/>
     <img style="display:none" src="./src/images/Scenes/frontdoor2.jpg" id="frontdoor2"/>
