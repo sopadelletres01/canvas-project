@@ -1,7 +1,7 @@
 const arrayDeEscenas = [
   {
     id: "hall",
-    hint : "La puerta estaba abierta y todas las luces están encendidas, pero no se ve a nadie cerca. Sin embargo, noto una presencia... Será mejor que me de prisa",
+    hint : "La puerta estaba abierta, todas las luces están encendidas pero no veo a nadie. Sin embargo, noto una presencia... Será mejor que me de prisa",
     background: document.getElementById("hall"),
     objectArray: [
       {

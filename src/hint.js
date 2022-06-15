@@ -53,6 +53,7 @@ export class Hint{
         (function writer(i){
             if(message.length <= i++){
             textContainer.innerText = message;
+            setTimeout(function(){self.hide()},3000)
                 return;
             }
             textContainer.innerText = message.substring(0,i);

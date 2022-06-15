@@ -9,11 +9,16 @@ import { Message } from "./writer.js";
 import { config } from "./config.js";
 import { Hint } from "./hint.js";
 
-const message = `Es de noche y estabas de vuelta de tu largo viaje. 
+const a = `Es de noche y estabas de vuelta de tu largo viaje. 
 Tu coche se ha quedado sin combustible y no hay ninguna gasolinera cerca.
 Hay una fuente de luz cerca de ti, te fijas y parece una antigua mansión.
  Parece que hay gente dentro, puede que tengan combustible...`
 
+const message = `Tras mucho meditarlo sigues dudando de porque estas aqui, 
+pero te has decidido a hacer caso a la nota que encontraste en el piso de tu mejor 
+amigo desaparecido en la que constaba esta direccion como su ultima ubicación.
+La principal razón de tu incertidumbre era la descripcion de la mansion que tu amigo mencionaba en la nota:
+ `
 export class Game {
     canvas;
     ctx;
