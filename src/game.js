@@ -29,6 +29,7 @@ export class Game {
     currentScene;
     returnButton;
     timer;
+    gameOverText;
     constructor(canvas,ctx){
       this.player = new Player(this)
       this.canvas = canvas;
@@ -158,6 +159,7 @@ export class Game {
       let seconds = this.secondsToEnd
       this.returnButton = document.getElementById("return")
       this.restartButton = document.getElementById("restart")
+      this.gameOverText = document.getElementById("gameover")
       this.timer = new Countdown(this.stop.bind(this),seconds || 60)
       this.returnButton.style.display = "block"
       this.timer.container.style.display = "block"
@@ -213,6 +215,8 @@ export class Game {
         element.box.remove()
       });
       this.restartButton.style.display = "block"
+      this.gameOverText.style.display = "block"
+      
       this.gameOver = true
     }
 
