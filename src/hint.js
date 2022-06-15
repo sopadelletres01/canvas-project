@@ -1,38 +1,64 @@
 export class Hint{
-    constructor(message){
-        this.message = message
+    message;
+    scene;
+    constructor(){
+        this.message = ""
         this.container = document.getElementById("hint")
         this.textContainer = this.container.querySelector("p")
+        this.onScreen = false;
         //this.index = 0
     }
 
-    show(){
+
+    show(message,scene){
+        if(!scene.hint || !message) {
+            this.hide()
+            return    
+        }
+        this.scene = scene
+        console.log("message",message)
+        this.message = message
         this.container.style.display = "flex"
         this.textContainer.style.display = "block"
-        this.write()
+        this.onScreen = true
+        this.write(this.message)
     }
 
-    handleClose(){
+    hide(){
         this.container.style.display = "none"
+        this.innerText = ""
+        this.message = ""
+        this.onScreen = false
+        this.clearTimeoutId()
     }
 
-    editMessage(message){
-        this.message = message
-    }
     
-    write(){
+    clearTimeoutId(){
+        const interval_id = window.setTimeout(function(){}, Number.MAX_SAFE_INTEGER);
+        // Clear any timeout/interval up to that id
+        for (let i = 1; i < interval_id; i++) {
+            window.clearTimeout(i);
+        }
+    }
+
+    checkScreen(){
+        return this.onScreen
+    }
+
+    write(message){
         //let index = this.index ? this.index : 0;
         let textContainer = this.textContainer;
-        let message = this.message;
+        let self = this;
         //console.log("message",message)
         (function writer(i){
             if(message.length <= i++){
             textContainer.innerText = message;
-            return;
+                return;
             }
             textContainer.innerText = message.substring(0,i);
-            var rand = Math.floor(Math.random() * (100)) + 20;
+            var rand = Math.floor(Math.random() * (100)) + 10;
             setTimeout(function(){writer(i);},rand);
         })(0)
+        console.log("end")
     }
 }

@@ -7,12 +7,11 @@ export class Scene{
     constructor(background,objectArray,id,returnTo,condition,audio,hint){
         this.id = id;
         this.audio = audio;
-        this.hint = hint && new Hint(hint);
+        this.hint = hint;
         this.returnTo = returnTo;
         this.background = background;
         this.condition = condition;
         this.objects = this.generateSceneImages(objectArray)
-        this.setupScene()
     }
 
     handleObjectClick(scene,obj){
@@ -34,21 +33,6 @@ export class Scene{
         return this.condition ? {...this.objectInfo,condition:this.condition} : this.objectInfo
     }
 
-    setupScene(){
-        this.hint && this.hint.container.addEventListener("click",()=>{
-            this.hint.handleClose()
-        })
-        if(this.hint) this.displayHint()
-    }
-
-    displayHint(){
-        console.log(hint)
-        this.hint.show()
-    }
-    
-    hideHint(){
-        this.hint.handleClose()
-    }
 
     draw(){
         if(this.audio) this.audio.play()
@@ -62,7 +46,6 @@ export class Scene{
             this.audio.currentTime = 0
             this.audio.pause()
         }
-        if(this.hint) this.hideHint()
 
         this.objects.forEach(obj => {
             obj.box.style.display = "none"

@@ -7,6 +7,7 @@ import { Key } from "./key.js";
 import { Countdown } from "./countdown.js";
 import { Message } from "./writer.js";
 import { config } from "./config.js";
+import { Hint } from "./hint.js";
 
 const message = `Es de noche y estabas de vuelta de tu largo viaje. 
 Tu coche se ha quedado sin combustible y no hay ninguna gasolinera cerca.
@@ -37,6 +38,7 @@ export class Game {
       this.key = new Key()
       this.mainAudio = document.getElementById("main")
       this.message = new Message(message)
+      this.hint = new Hint()
       this.introScene()
     }
 
@@ -56,6 +58,7 @@ export class Game {
       this.currentScene = this.scenes[0]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupUI()
+      this.hint.show(this.currentScene.hint,this.currentScene)
     }
 
     draw(ctx){
@@ -163,9 +166,14 @@ export class Game {
 
     handleSceneChange(prevScene,nextScene,action){
       this.playAudio(this.mainAudio)
+      console.log("onscreen1",this.hint.onScreen)
+      this.hint.hide()
       prevScene.clearSceneInfo()
       action()
       nextScene.clearSceneInfo()
+      this.hint.show(nextScene?.hint,nextScene)
+      console.log("onscreen2",this.hint.onScreen)
+
     }
 
     checkEnd(){
