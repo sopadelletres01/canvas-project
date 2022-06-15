@@ -39,7 +39,7 @@ export class Game {
       this.input = new InputHandler(canvas)
       this.gameOver = false;
       this.gameWin = false;
-      this.secondsToEnd = config.quickGame ? 5 : 60 * 5
+      this.secondsToEnd = 300
       //Array de escenas (Objetos) con su background y objetos
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.key = new Key()
