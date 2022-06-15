@@ -3,7 +3,6 @@ export class Message{
         this.message = message
         this.container = document.getElementById("message")
         this.textContainer = this.container.querySelector("p")
-        this.container.addEventListener("click",this.handleClose)
         //this.index = 0
     }
 
@@ -32,9 +31,9 @@ export class Message{
             return;
             }
             textContainer.innerText = message.substring(0,i);
-            var rand = Math.floor(Math.random() * (100)) + 40;
+            var rand = Math.floor(Math.random() * (100)) + 20;
             setTimeout(function(){writer(i);},rand);
-        })(10)
+        })(0)
     }
 
 

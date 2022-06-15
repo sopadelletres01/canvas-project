@@ -41,6 +41,8 @@ export class Game {
     init(){
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
+      this.message.container.addEventListener("click",()=>{
+        this.message.handleClose()})
       this.message.show()
     }
 
