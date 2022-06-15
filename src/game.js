@@ -135,8 +135,8 @@ export class Game {
 
     loadScenes(array){
       return array.map(scene => {
-        const {background,objectArray,id,returnTo,condition,audio} = scene;
-        return new Scene(background,objectArray,id,returnTo,condition,audio)
+        const {background,objectArray,id,returnTo,condition,audio,hint} = scene;
+        return new Scene(background,objectArray,id,returnTo,condition,audio,hint)
       });
     }
 

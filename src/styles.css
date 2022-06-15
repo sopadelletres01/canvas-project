@@ -84,6 +84,15 @@ body{
   background: rgba(255, 230, 89, 0.692);
 }
 
+
+#hint{
+  position: absolute;
+  background-color: blue;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+}
 .rotateLeft{
   transform: scaleX(-1);
 }
