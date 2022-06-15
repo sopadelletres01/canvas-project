@@ -42,13 +42,11 @@ export class Player{
     generateImage(src) {
         let img = new Image()
         img.src = src
-        console.dir(img)
         return img;
       }
     
     addItem(item){
         this.inventory.push(item)
-        console.log("inventory",this.inventory)
     }
 
     removeItem(item){

@@ -15,7 +15,6 @@ export class SceneObject{
     }
 
     updateStyles(){
-        console.log("BOX",this.box)
 
         Object.assign(this.box.style,{
             cursor: "pointer",
@@ -35,7 +34,6 @@ export class SceneObject{
     generateImage(src) {
         let img = new Image()
         img.src = src
-        console.dir(img)
         return img;
       }
 }

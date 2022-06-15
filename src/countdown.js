@@ -7,7 +7,6 @@ export class Countdown{
         const countdown = document.getElementById("countdown")
         let counter = 1;
         let downloadTimer = setInterval(function(){
-            console.debug(timeLeft)
             if(timeLeft <= 0){
               clearInterval(downloadTimer);
               cb()

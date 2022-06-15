@@ -23,7 +23,6 @@ export class Message{
     write(){
         //let index = this.index ? this.index : 0;
         let textContainer = this.textContainer;
-        console.log("text",textContainer)
         let message = this.message;
         (function writer(i){
             if(message.length <= i++){

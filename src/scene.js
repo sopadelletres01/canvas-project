@@ -12,17 +12,14 @@ export class Scene{
     }
 
     handleObjectClick(scene,obj){
-        console.log("OBJETO DE ESCENA",obj)
         this.objectInfo = obj;
     }
 
     generateSceneImages(objectArray){
-        console.log("OBJECTO",objectArray)
         //se ejecuta siempre 
         return objectArray.map(obj => {
             const {x,y,height,width,box,goTo,item,requiredItem} = obj;
             box.addEventListener("click",()=>{
-                console.log("OBJECTTS",obj)
                 this.handleObjectClick(this,obj)
             })
             return new SceneObject(x,y,height,width,box,goTo,item,requiredItem)
@@ -30,23 +27,19 @@ export class Scene{
     }
 
     getSceneInfo(){
-        console.log("OBJETO clone",this.objectInfo) 
         return this.condition ? {...this.objectInfo,condition:this.condition} : this.objectInfo
     }
 
     draw(){
-        console.dir("audio",this.audio)
         if(this.audio) this.audio.play()
 
         this.objects.forEach(obj => {
-            console.log("displayB",obj)
             obj.box.style.display = "block"
         });
     }
 
     clearSceneInfo(){
         if(this.audio) {
-            console.log("audioo",this.audio)
             this.audio.currentTime = 0
             this.audio.pause()
         }
@@ -70,7 +63,6 @@ export class Scene{
     }
 
     addItem(item){
-        console.log("BOOX",this.objectInfo)
         //let itemToFind = this.objects.find(obj=>obj?.requiredItem === item)
         this.objectInfo.box = document.getElementById(item)
         this.objectInfo.box.style.display="block"

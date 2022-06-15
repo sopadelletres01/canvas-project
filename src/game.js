@@ -59,7 +59,6 @@ export class Game {
       //Variable temporal para no perder la escena anterior
       let previousScene = this.currentScene;
       let info = this.currentScene.getSceneInfo()
-      console.log("INFO",info)
       if ( info ){
         if ( info.goTo ){
           let scene = this.scenes.find(scn => scn.id == info.goTo)
@@ -73,7 +72,6 @@ export class Game {
             this.handleSceneChange(this.currentScene,previousScene,()=>{
               this.currentScene = previousScene
             })
-            console.log("CAGASTE")
           }
           else if ( this.checkSceneCondition(newInfo?.condition) ){
             //Condicion victoria
@@ -82,7 +80,6 @@ export class Game {
               this.stop()
             }
             this.handleSceneChange(this.currentScene,this.currentScene,()=>{
-              console.log("tusa, usando... ",newInfo.condition)
             })
           }
         }
@@ -92,11 +89,7 @@ export class Game {
             this.currentScene.removeItem(info.item)
           })
         }
-        console.log("REQUIRED",info?.requiredItem)
-        console.log("Check",this.player.checkItem(info?.requiredItem))
         if ( info?.requiredItem && this.player.checkItem(info.requiredItem) ){
-          console.log("GUcci")
-          console.log("infoitem",info)
           this.player.removeItem(info.item)
           this.currentScene.addItem(info.requiredItem)
           this.currentScene.clearSceneInfo()
@@ -110,21 +103,16 @@ export class Game {
     setKeyScene(){
       let scene = this.scenes.find(scn=>scn.id === this.key.scene)
       scene.setKey(this.key)
-      console.log("scenerand",scene)
-      console.log("scenekey",this.key)
     }
 
     checkSceneCondition(condition){
-      console.log("condition",condition)
       let check = this.player.inventory.includes(condition)
-      console.log("check",check)
       return check
     }
 
     generateImage(src) {
       let img = new Image()
       img.src = src
-      console.dir("img",img)
       return img;
     }
 
