@@ -21,11 +21,11 @@ export class Scene{
     generateSceneImages(objectArray){
         //se ejecuta siempre 
         return objectArray.map(obj => {
-            const {x,y,height,width,box,goTo,item,requiredItem} = obj;
+            const {x,y,height,width,box,goTo,item,requiredItem,audio} = obj;
             box.addEventListener("click",()=>{
                 this.handleObjectClick(this,obj)
             })
-            return new SceneObject(x,y,height,width,box,goTo,item,requiredItem)
+            return new SceneObject(x,y,height,width,box,goTo,item,requiredItem,audio)
         });
     }
 
@@ -39,6 +39,12 @@ export class Scene{
         this.objects.forEach(obj => {
             obj.box.style.display = "block"
         });
+    }
+
+    stopAudio(){
+        this.audio.currentTime = 0
+        this.audio.pause()
+        this.audio = ""
     }
 
     clearSceneInfo(){

@@ -100,6 +100,7 @@ const arrayDeEscenas = [
   },
   {
     id: "rightwall",
+    hint : "Veo una vela, puede que me haga falta para algo...",
     background: document.getElementById("rightwall"),
     returnTo : "frontdoor2",
     objectArray: [
@@ -117,6 +118,7 @@ const arrayDeEscenas = [
     id: "statue2",
     background: document.getElementById("statue2"),
     returnTo : "hall",
+    hint:"Hay dos escaleras que llevan al mismo sitio, supongo que no importa por cual suba...",
     objectArray: [
       {
         x: 200,
@@ -147,6 +149,7 @@ const arrayDeEscenas = [
   {
     id: "statue",
     background: document.getElementById("statue"),
+    audio: document.getElementById("secret"),
     objectArray: [
       {
         x: 750,
@@ -161,6 +164,8 @@ const arrayDeEscenas = [
   {
     id: "statuezoom",
     background: document.getElementById("statuezoom"),
+    audio: document.getElementById("secret"),
+    hint:"Parece que falta algo en esta ranura... La base tiene forma de vela",
     objectArray: [
       {
         x: 800,
@@ -168,7 +173,8 @@ const arrayDeEscenas = [
         height: 100,
         width: 100,
         box: document.getElementById("door14"),
-        requiredItem: "candle"
+        requiredItem: "candle",
+        audio: document.getElementById("secretdone"),
       },
     ]
   },

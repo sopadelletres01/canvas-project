@@ -113,7 +113,12 @@ export class Game {
         if ( info?.requiredItem && this.player.checkItem(info.requiredItem) ){
           this.player.removeItem(info.item)
           this.currentScene.addItem(info.requiredItem)
-          this.currentScene.clearSceneInfo()
+          this.currentScene.stopAudio()
+          if ( info?.audio ) {
+              console.log(this.currentScene)
+              this.currentScene.clearSceneInfo()
+              info.audio.play()
+          }
           this.setKeyScene()
 
         }

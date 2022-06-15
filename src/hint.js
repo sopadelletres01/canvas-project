@@ -1,6 +1,7 @@
 export class Hint{
     message;
     scene;
+    timeoutId;
     constructor(){
         this.message = ""
         this.container = document.getElementById("hint")
@@ -34,11 +35,8 @@ export class Hint{
 
     
     clearTimeoutId(){
-        const interval_id = window.setTimeout(function(){}, Number.MAX_SAFE_INTEGER);
-        // Clear any timeout/interval up to that id
-        for (let i = 1; i < interval_id; i++) {
-            window.clearTimeout(i);
-        }
+        window.clearTimeout(this.timeoutId)
+
     }
 
     checkScreen(){
@@ -58,7 +56,7 @@ export class Hint{
             }
             textContainer.innerText = message.substring(0,i);
             var rand = Math.floor(Math.random() * (100)) + 10;
-            setTimeout(function(){writer(i);},rand);
+            self.timeoutId = setTimeout(function(){writer(i);},rand);
         })(0)
         console.log("end")
     }
