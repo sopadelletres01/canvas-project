@@ -30,6 +30,7 @@ export class Game {
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
       this.currentScene = this.scenes[0]
       this.key = new Key()
+      this.mainAudio = document.getElementById("main")
       //this.timer = new Countdown(this.stop.bind(this),60)
       this.message = new Message(`Lo último que recuerdas es estar en el coche a las afueras de la ciudad. 
       Lo único que sabes es que tienes que escapar de aquí...
@@ -42,7 +43,15 @@ export class Game {
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupReturnButton()
       this.message.container.addEventListener("click",()=>{
-        this.message.handleClose()})
+        this.message.handleClose()
+      })
+      /* function playAudio(){
+        this.mainAudio.oncanplay = function(){playAudio}
+      } */
+      this.message.button.addEventListener("click",()=>{
+        console.log(this.mainAudio)
+        this.mainAudio.play()
+      })
       this.message.show()
     }
 
@@ -63,6 +72,7 @@ export class Game {
         if ( info.goTo ){
           let scene = this.scenes.find(scn => scn.id == info.goTo)
           this.handleSceneChange(this.currentScene,scene,()=>{
+            if(scene.audio) this.mainAudio.pause()
             this.currentScene = scene
           })
           //Una vez cambiamos de escena, antes de renderizarla, comprobamos que la condicion se cumpla
@@ -141,6 +151,7 @@ export class Game {
     }
 
     handleSceneChange(prevScene,nextScene,action){
+      this.mainAudio.play()
       prevScene.clearSceneInfo()
       action()
       nextScene.clearSceneInfo()

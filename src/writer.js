@@ -3,6 +3,7 @@ export class Message{
         this.message = message
         this.container = document.getElementById("message")
         this.textContainer = this.container.querySelector("p")
+        this.button = this.container.querySelector("button")
         //this.index = 0
     }
 
