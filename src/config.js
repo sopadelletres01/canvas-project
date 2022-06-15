@@ -1,5 +1,5 @@
 const config = {
-    audioPlay : false,
+    audioPlay : true,
     debugMode : false,
     staticGame: false
 }

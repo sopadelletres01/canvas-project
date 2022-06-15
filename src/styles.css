@@ -59,7 +59,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #message p{
@@ -70,7 +70,19 @@ body{
   font-weight: bold;
 }
 
-#message
+#message button{
+  border: 1px solid white;
+  width: 100px;
+  height: 40px;
+  border-radius: 16px;
+  background: transparent;
+  margin-bottom: 50px;
+}
+
+#message button:hover{
+
+  background: rgba(255, 230, 89, 0.692);
+}
 
 .rotateLeft{
   transform: scaleX(-1);

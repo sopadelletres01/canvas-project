@@ -26,30 +26,34 @@ export class Game {
       this.input = new InputHandler(canvas)
       this.gameOver = false;
       this.gameWin = false;
+      this.secondsToEnd = 60
       //Array de escenas (Objetos) con su background y objetos
-      this.scenes = this.loadScenes(arrayDeEscenas);
       //Current scene sera la escena actual (con el boton de return volvemos a la escena donde estabamos anteriormente)
-      this.currentScene = this.scenes[0]
       this.key = new Key()
       this.mainAudio = document.getElementById("main")
-      //this.timer = new Countdown(this.stop.bind(this),60)
       this.message = new Message(`Lo último que recuerdas es estar en el coche a las afueras de la ciudad. 
       Lo único que sabes es que tienes que escapar de aquí...
       escuchas ruidos y sientes que no estas solo...
       Apresúrate`)
-      this.init()
+      this.introScene()
+    }
+
+    introScene(){
+      this.message.container.addEventListener("click",()=>{
+        this.playAudio(this.mainAudio)
+        this.message.handleClose()
+        this.init()
+      })
+      this.ctx.drawImage(document.getElementById("frontdoor2"),0,0)
+      this.message.show()
     }
 
     init(){
+      
+      this.scenes = this.loadScenes(arrayDeEscenas);
+      this.currentScene = this.scenes[0]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
-      this.setupReturnButton()
-      this.message.container.addEventListener("click",()=>{
-        this.message.handleClose()
-      })
-      this.message.button.addEventListener("click",()=>{
-        this.playAudio(this.mainAudio)
-      })
-      this.message.show()
+      this.setupUI()
     }
 
     draw(ctx){
@@ -134,8 +138,12 @@ export class Game {
       });
     }
 
-    setupReturnButton(){
+    setupUI(){
+      let seconds = this.secondsToEnd
       this.returnButton = document.getElementById("return")
+      this.timer = new Countdown(this.stop.bind(this),seconds || 60)
+      this.returnButton.style.display = "block"
+      this.timer.container.style.display = "block"
       this.returnButton.addEventListener("click",(e)=>{
         let index = this.scenes.indexOf(this.currentScene)
         if (index <= 0) return

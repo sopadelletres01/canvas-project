@@ -8,8 +8,8 @@
 
   <body>
     <!--UI-->
-    <button id="return" ><img src="./src/images/return.png"/></button>
-    <div id="countdownWrapper">
+    <button style="display: none;" id="return" ><img src="./src/images/return.png"/></button>
+    <div style="display: none;" id="countdownWrapper">
       <progress value="0" max="60" id="progressBar"></progress>
       <span id="countdown">60</span><span> Seconds Left</span>
     </div>
@@ -20,7 +20,7 @@
     <!--UI-->
     <!--Sounds-->
     <audio id="corridor"><source src="./src/sounds/corridor.mp3" type="audio/mp3"></source></audio>
-    <audio id="main"><source src="./src/sounds/ost.mp3" type="audio/mp3"></source></audio>
+    <audio loop id="main"><source src="./src/sounds/ost3.mp3" type="audio/mp3"></source></audio>
     <audio id="jumpscare2audio"><source src="./src/sounds/wrongway.mp3" type="audio/mp3"></source></audio>
     <!--Sounds-->
     <img style="display:none" src="./src/images/Scenes/hall5.jpg" id="hall"/>

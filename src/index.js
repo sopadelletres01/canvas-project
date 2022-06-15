@@ -18,8 +18,9 @@ window.addEventListener("load", () => {
     if(!staticGame && !game.checkEnd()) requestAnimationFrame(animate)
     
   }
-
-  animate()
+  game.message.container.addEventListener("click",()=>{
+    animate()
+  })
 
   window.addEventListener('resize',()=>{
     canvas.width = window.innerWidth;

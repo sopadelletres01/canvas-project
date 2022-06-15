@@ -1,6 +1,7 @@
 export class Countdown{
     constructor(cb,timer){
         this.start(cb,timer)
+        this.container = document.getElementById("countdownWrapper")
     }
     start(cb,timeLeft){
         const progressBar = document.getElementById("progressBar")
