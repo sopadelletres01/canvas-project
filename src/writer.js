@@ -1,4 +1,5 @@
 export class Message{
+    timeoutId;
     constructor(message){
         this.message = message
         this.container = document.getElementById("message")
@@ -18,13 +19,15 @@ export class Message{
     }
 
     editMessage(message){
+        window.clearTimeout(this.timeoutId)
         this.message = message
     }
-    
+
     write(){
         //let index = this.index ? this.index : 0;
         let textContainer = this.textContainer;
         let message = this.message;
+        let self = this;
         (function writer(i){
             if(message.length <= i++){
             textContainer.innerText = message;
@@ -32,28 +35,9 @@ export class Message{
             }
             textContainer.innerText = message.substring(0,i);
             var rand = Math.floor(Math.random() * (100)) + 20;
-            setTimeout(function(){writer(i);},rand);
+            self.timeoutId = setTimeout(function(){writer(i);},rand);
         })(0)
     }
 
 
 } 
-/* var element = document.querySelector('#test');
-var string = "asdasdasdasdasfsafasfas"
-
-function type(string, index){
-  index = index ? index : 0;
-  (function writer(i){
-    if(string.length <= i++){
-      element.innerText = string;
-      return;
-    }
-    element.innerText = string.substring(0,i);
-    var rand = Math.floor(Math.random() * (100)) + 140;
-    setTimeout(function(){writer(i);},rand);
-  })(0)
-}
-
-
-
-type(string); */

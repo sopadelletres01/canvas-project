@@ -80,6 +80,10 @@ export class Game {
       //Comprobar que la info se elimine una vez que se cambia de escena (evitar bucle de cambio de escenas)
       //Intentar refactorizar el if statement
       //Variable temporal para no perder la escena anterior
+      if(this.player.inventory.includes("letter")) {
+        this.gameWin = true
+        this.stop()
+      }
       let previousScene = this.currentScene;
       let info = this.currentScene.getSceneInfo()
       if ( info ){
@@ -214,8 +218,10 @@ export class Game {
     }
 
     win(){
-
-      alert("Te sacaste la vergota mirey")
+      //let papiro = new Message("Te sacaste la vergota mirey")
+      this.message.editMessage("Te sacaste la vergota mirey")
+      this.message.show()
+      
     }
 
     lose(){
