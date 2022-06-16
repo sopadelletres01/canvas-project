@@ -14,11 +14,10 @@ Tu coche se ha quedado sin combustible y no hay ninguna gasolinera cerca.
 Hay una fuente de luz cerca de ti, te fijas y parece una antigua mansión.
  Parece que hay gente dentro, puede que tengan combustible...`
 
-const message = `Tras mucho meditarlo sigues dudando de porque estas aqui, 
+const message = `Tras mucho meditarlo sigues dudando de porqué estás aquí, 
 pero te has decidido a hacer caso a la nota que encontraste en el piso de tu mejor 
-amigo desaparecido en la que constaba esta direccion como su ultima ubicación.
-La principal razón de tu incertidumbre era la descripcion de la mansion que tu amigo mencionaba en la nota:
- `
+amigo desaparecido. En la nota que constaba esta dirección como su última ubicación.
+Ahora ya estás aquí y no hay vuelta atrás:`
 export class Game {
     canvas;
     ctx;
@@ -62,7 +61,7 @@ export class Game {
     init(){
       
       this.scenes = this.loadScenes(arrayDeEscenas);
-      this.currentScene = this.scenes[this.scenes.length -1]
+      this.currentScene = this.scenes[0]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupUI()
       this.hint.show(this.currentScene.hint,this.currentScene)
@@ -104,12 +103,12 @@ export class Game {
           //Una vez cambiamos de escena, antes de renderizarla, comprobamos que la condicion se cumpla
           //Si no se cumple, volvemos a la escena anterior
           let newInfo = this.currentScene.getSceneInfo()
-          if ( newInfo?.condition && this.checkSceneCondition(newInfo?.condition)){
+          if ( newInfo?.condition && !this.checkSceneCondition(newInfo?.condition)){
             this.handleSceneChange(this.currentScene,previousScene,()=>{
               this.currentScene = previousScene
             })
           }
-          else if ( !this.checkSceneCondition(newInfo?.condition) ){
+          else if ( this.checkSceneCondition(newInfo?.condition) ){
             //Condicion victoria
             /* if (newInfo.condition === "goldenkey") {
               this.gameWin = true;
@@ -218,10 +217,31 @@ export class Game {
     }
 
     win(){
-      //let papiro = new Message("Te sacaste la vergota mirey")
-      this.message.editMessage("Te sacaste la vergota mirey")
+      this.message.editMessage(`Querido amigo, sabia que vendrias. Esto es solo el principio, has sido elegido para ser uno de los 'vigilantes'
+      ellas nos ayudaran, me han contado todo sobre este mundo y sobre el 'otro'. No tengas miedo, cruza la puerta conmigo`)
+      this.message.button.innerText = "Ir con tu amigo..."
+      this.message.container.addEventListener("click",()=>{
+        this.clearScreen()
+        const video = document.getElementById("win")
+        const winalert = document.getElementById("winalert")
+        video.style.display = "block"
+        winalert.style.display = "block"
+        video.play()
+      })
       this.message.show()
       
+    }
+
+    clearScreen(){
+      this.mainAudio.pause()
+      this.returnButton.style.display = "none"
+      this.timer.container.style.display = "none"
+      this.hint.container.style.display = "none"
+      console.log(this.currentScene)
+      this.currentScene.objects.forEach(element => {
+        element.box.remove()
+      });
+      this.message.handleClose()
     }
 
     lose(){

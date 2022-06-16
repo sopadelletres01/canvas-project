@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Crimson+Text:ital@1&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Cinzel&family=Crimson+Text:ital@1&family=Space+Mono&display=swap');
 body,html {
   width: 100%;
   height: 100%;
@@ -197,4 +197,26 @@ box-shadow: inset 0px 0px 12px 6px rgba(221, 255, 31, 0.81);
 #letter{
   transform: skew(303deg, 32deg);
   /* transform: rotate3d(1, 1, 1, 272deg); */
+}
+
+#win{
+  z-index: 10;
+}
+
+#winalert{
+  font-family: 'Bad Script', cursive;
+  font-weight: bold;
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  position: absolute;
+  background-color: hsla(219, 79%, 58%, 0.699);
+  -webkit-box-shadow: inset 0px 0px 12px 6px rgba(134, 134, 127, 0.81); 
+box-shadow: inset 0px 0px 12px 6px rgba(173, 173, 173, 0.81);
+  top: 20px;
+  right: 50%;
+  transform: translate(50%);
+  width: 800px;
+  font-size: 26px;
 }
