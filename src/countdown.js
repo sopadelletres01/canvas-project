@@ -8,6 +8,17 @@ export class Countdown{
         const countdown = document.getElementById("countdown")
         let counter = 1;
         let downloadTimer = setInterval(function(){
+          console.log(progressBar.max/2)
+            if( timeLeft === (progressBar.max / 2)){
+              let randomAudio = document.getElementById("escalated")
+              randomAudio.play()
+              let alertElem = document.getElementById("alert")
+              alertElem.style.display = "block"
+              setTimeout(()=>{
+                alertElem.style.display = "none"
+              },5000)
+
+            }
             if(timeLeft <= 0){
               clearInterval(downloadTimer);
               cb()

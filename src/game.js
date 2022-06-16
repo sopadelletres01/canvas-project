@@ -66,6 +66,7 @@ export class Game {
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupUI()
       this.hint.show(this.currentScene.hint,this.currentScene)
+      this.setupKeyInScene()
     }
 
     draw(ctx){
@@ -84,6 +85,14 @@ export class Game {
       if ( info ){
         if ( info.goTo ){
           let scene = this.scenes.find(scn => scn.id == info.goTo)
+          if(scene.id === "jumpscare2") {
+            console.log("scene",this.currentScene)
+            setTimeout(()=>{
+              this.currentScene = this.scenes[0]
+              this.mainAudio.play()
+            },2000)
+          }
+
           this.handleSceneChange(this.currentScene,scene,()=>{
             if(scene.audio) this.mainAudio.pause()
             this.currentScene = scene
@@ -121,7 +130,7 @@ export class Game {
               this.currentScene.clearSceneInfo()
               info.audio.play()
           }
-          this.setKeyScene()
+          this.showKeyInScene()
 
         }
       }
@@ -132,9 +141,15 @@ export class Game {
       if(config.audioPlay) audio.play()
     }
 
-    setKeyScene(){
+    setupKeyInScene(){
       let scene = this.scenes.find(scn=>scn.id === this.key.scene)
-      scene.setKey(this.key)
+      scene.setupKey(this.key)
+      scene.hint = "Hay un brillo en la columna pero no puedo alcanzar, seguramente necesite activar algo antes"
+    }
+
+    showKeyInScene(){
+      let scene = this.scenes.find(scn=>scn.id === this.key.scene)
+      scene.showKey(this.key)
     }
 
     checkSceneCondition(condition){

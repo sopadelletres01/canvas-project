@@ -23,7 +23,7 @@ export class SceneObject{
             height: this.height+"px",
             width: this.width+"px",
             position: "absolute",
-            background: this.debugMode ? "red" : "transparent",
+            backgroundColor: this.debugMode ? "red" : "transparent",
             left: this.x+"px",
             top: this.y+"px"
          })

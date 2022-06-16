@@ -42,14 +42,14 @@ const arrayDeEscenas = [
         box: document.getElementById("door16"),
         goTo: "rightwall"
       },
-      {
+      /* {
         x: 340,
         y: 450,
         height: 250,
         width: 200,
         box: document.getElementById("door19"),
         goTo: "frontdoor2zoom"
-      },
+      }, */
     ]
   },
   {
@@ -84,7 +84,7 @@ const arrayDeEscenas = [
       },
     ]
   },
-  {
+  /* {
     id: "frontdoor2zoom",
     background: document.getElementById("frontdoor2zoom"),
     objectArray: [
@@ -97,7 +97,7 @@ const arrayDeEscenas = [
         goTo: "rightwall"
       },
     ]
-  },
+  }, */
   {
     id: "rightwall",
     hint : "Veo una vela, puede que me haga falta para algo...",
@@ -150,6 +150,7 @@ const arrayDeEscenas = [
     id: "statue",
     background: document.getElementById("statue"),
     audio: document.getElementById("secret"),
+    hint : "Hay algo misterioso en esta estatua...",
     objectArray: [
       {
         x: 750,

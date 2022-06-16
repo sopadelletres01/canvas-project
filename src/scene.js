@@ -4,6 +4,7 @@ import { SceneObject } from "./sceneObject.js"
 
 export class Scene{
     objectInfo;
+    key;
     constructor(background,objectArray,id,returnTo,condition,audio,hint){
         this.id = id;
         this.audio = audio;
@@ -62,11 +63,20 @@ export class Scene{
         this.objectInfo = null;
     }
 
-    setKey(keyObject){
+    setupKey(keyObject){
         const {x,y,height,width,box,goTo,item,requiredItem} = keyObject;
-        this.objects.push(new SceneObject(x,y,height,width,box,goTo,item,requiredItem))
-        box.addEventListener("click",()=>{
-            this.handleObjectClick(this,{...keyObject})
+        this.key = new SceneObject(x,y,height,width,box,goTo,item,requiredItem)
+        this.objects.push(this.key)
+    }
+
+    showKey(){
+        let key = this.objects.find(obj=>obj===this.key)
+        key.box = document.getElementById("key")
+        key.width = 90;
+        key.height = 40
+        key.updateStyles()
+        key.box.addEventListener("click",()=>{
+            this.handleObjectClick(this,{...this.key})
         })
     }
 

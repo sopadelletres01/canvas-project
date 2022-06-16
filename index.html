@@ -12,8 +12,10 @@
     <h1 id="gameover" style="display:none;">No has podido escapar a tiempo y las hermanas te han encontrado</h1>
     <button style="display: none;" id="restart" >Restart Game</button>
     <div style="display: none;" id="countdownWrapper">
-      <progress value="0" max="300" id="progressBar"></progress>
-      <span id="countdown">300</span><span> Seconds Left</span>
+      <div>
+        <progress value="0" max="300" id="progressBar"></progress>
+        <span id="countdown">300</span><span> Seconds Left</span>
+      </div>
     </div>
     <div id="message">
       <p></p>
@@ -22,6 +24,9 @@
     <div style="display: none;" id="hint">
       <p></p>
     </div>
+    <div style="display: none;" id="alert">
+      <p>Te queda la mitad del tiempo</p>
+    </div>
     <!--UI-->
     <!--Sounds-->
     <audio id="corridor"><source src="./src/sounds/corridor.mp3" type="audio/mp3"></source></audio>
@@ -29,6 +34,7 @@
     <audio id="jumpscare2audio"><source src="./src/sounds/wrongway.mp3" type="audio/mp3"></source></audio>
     <audio id="secret"><source src="./src/sounds/secret.mp3" type="audio/mp3"></source></audio>
     <audio id="secretdone"><source src="./src/sounds/secretdone.mp3" type="audio/mp3"></source></audio>
+    <audio id="escalated"><source src="./src/sounds/escalatesound.mp3" type="audio/mp3"></source></audio>
     <!--Sounds-->
     <img style="display:none" src="./src/images/forestmansion2.jpg" id="forest"/>
     <img style="display:none" src="./src/images/scarejump1.jpg" id="lose"/>
@@ -74,6 +80,7 @@
     <div style="display:none" id="door22" ></div>
     <div style="display:none" id="door23" ></div>
     <!--Items--> 
+    <div style="display:none" id="keySocket" ></div>
     <img style="display:none" src="./src/images/goldkey.jpg" id="key" ></img>
     <img style="display:none" src="./src/images/candle2.png" id="candle" ></img>
     <canvas id="canvas"> </canvas>
