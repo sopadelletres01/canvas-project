@@ -62,7 +62,7 @@ export class Game {
     init(){
       
       this.scenes = this.loadScenes(arrayDeEscenas);
-      this.currentScene = this.scenes[9]
+      this.currentScene = this.scenes[this.scenes.length -1]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupUI()
       this.hint.show(this.currentScene.hint,this.currentScene)
@@ -100,18 +100,19 @@ export class Game {
           //Una vez cambiamos de escena, antes de renderizarla, comprobamos que la condicion se cumpla
           //Si no se cumple, volvemos a la escena anterior
           let newInfo = this.currentScene.getSceneInfo()
-          if ( newInfo?.condition && !this.checkSceneCondition(newInfo?.condition)){
+          if ( newInfo?.condition && this.checkSceneCondition(newInfo?.condition)){
             this.handleSceneChange(this.currentScene,previousScene,()=>{
               this.currentScene = previousScene
             })
           }
-          else if ( this.checkSceneCondition(newInfo?.condition) ){
+          else if ( !this.checkSceneCondition(newInfo?.condition) ){
             //Condicion victoria
-            if (newInfo.condition === "goldenkey") {
+            /* if (newInfo.condition === "goldenkey") {
               this.gameWin = true;
               this.stop()
-            }
-            this.handleSceneChange(this.currentScene,this.currentScene,()=>{
+            } */
+            let scene = this.scenes.find(scn => scn.id == info.goTo)
+            this.handleSceneChange(this.currentScene,scene,()=>{
             })
           }
         }

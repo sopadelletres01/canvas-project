@@ -280,6 +280,7 @@ const arrayDeEscenas = [
   {
     id: "frontdoor",
     returnTo: "stairs3",
+    hint: "La puerta tiene cerradura, necesitaré la llave para abrirla.",
     background: document.getElementById("frontdoor"),
     objectArray: [
       {
@@ -296,15 +297,32 @@ const arrayDeEscenas = [
     id: "mainroom",
     returnTo: "frontdoor",
     condition : "goldenkey",
+    hint: "Segun la descripcion de la carta, mi amigo se encontraba en el segundo piso...",
     background: document.getElementById("mainroom"),
     objectArray: [
       {
-        x: 200,
-        y: 500,
-        height: 100,
-        width: 100,
+        x: 350,
+        y: 450,
+        height: 200,
+        width: 200,
         box: document.getElementById("door12"),
-        goTo: "mainroom"
+        goTo: "table"
+      }
+    ]
+  },
+  {
+    id: "table",
+    returnTo: "mainroom",
+    hint: "Hay un papiro con la letra de mi amigo...",
+    background: document.getElementById("table"),
+    objectArray: [
+      {
+        x: 1450,
+        y: 375,
+        height: 200,
+        width: 200,
+        box: document.getElementById("letter"),
+        item: "letter"
       }
     ]
   },

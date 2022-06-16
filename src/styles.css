@@ -193,3 +193,8 @@ box-shadow: inset 0px 0px 12px 6px rgba(221, 255, 31, 0.81);
   border-radius: 50%;
   overflow: hidden;
 }
+
+#letter{
+  transform: skew(303deg, 32deg);
+  /* transform: rotate3d(1, 1, 1, 272deg); */
+}
