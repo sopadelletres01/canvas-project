@@ -183,4 +183,6 @@ box-shadow: inset 0px 0px 12px 6px rgba(221, 255, 31, 0.81);
   position: absolute;
   background-image: url("./images/keyParticles.gif");
   background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
 }

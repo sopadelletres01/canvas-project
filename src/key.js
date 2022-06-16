@@ -3,13 +3,13 @@ import { SceneObject } from "./sceneObject.js"
 const keyPositions =[
     {
         id:"stairs2l",
-        x:200,
-        y:200
+        x:780,
+        y:100
     },
     {
         id:"stairs2",
-        x:200,
-        y:200
+        x:580,
+        y:120
     },
     
     /* {

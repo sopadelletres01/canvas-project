@@ -122,8 +122,8 @@ const arrayDeEscenas = [
     objectArray: [
       {
         x: 200,
-        y: 500,
-        height: 400,
+        y: 300,
+        height: 600,
         width: 300,
         box: document.getElementById("door6"),
         goTo: "stairs1l"
@@ -131,15 +131,15 @@ const arrayDeEscenas = [
       {
         x: 900,
         y: 400,
-        height: 300,
-        width: 300,
+        height: 400,
+        width: 400,
         box: document.getElementById("door13"),
         goTo: "statue"
       },
       {
         x: 1600,
-        y: 500,
-        height: 400,
+        y: 300,
+        height: 600,
         width: 300,
         box: document.getElementById("door3"),
         goTo: "stairs1"
@@ -185,10 +185,10 @@ const arrayDeEscenas = [
     background: document.getElementById("stairs1"),
     objectArray: [
       {
-        x: 500,
-        y: 400,
+        x: 300,
+        y: 350,
         height: 400,
-        width: 400,
+        width: 800,
         box: document.getElementById("door4"),
         goTo: "stairs2"
       }
@@ -200,10 +200,10 @@ const arrayDeEscenas = [
     background: document.getElementById("stairs1l"),
     objectArray: [
       {
-        x: 1000,
+        x: 900,
         y: 400,
         height: 400,
-        width: 400,
+        width: 600,
         box: document.getElementById("door7"),
         goTo: "stairs2l"
       }

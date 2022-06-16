@@ -62,7 +62,7 @@ export class Game {
     init(){
       
       this.scenes = this.loadScenes(arrayDeEscenas);
-      this.currentScene = this.scenes[0]
+      this.currentScene = this.scenes[9]
       this.background = this.currentScene.background || document.getElementById("hall") || this.generateImage(this.IMAGE_SRC);
       this.setupUI()
       this.hint.show(this.currentScene.hint,this.currentScene)
