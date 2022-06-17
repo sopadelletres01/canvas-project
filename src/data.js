@@ -270,8 +270,8 @@ const arrayDeEscenas = [
       {
         x: 200,
         y: 500,
-        height: 100,
-        width: 100,
+        height: 0,
+        width: 0,
         box: document.getElementById("door10"),
         goTo: "leftdoor"
       }

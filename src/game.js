@@ -14,9 +14,10 @@ Tu coche se ha quedado sin combustible y no hay ninguna gasolinera cerca.
 Hay una fuente de luz cerca de ti, te fijas y parece una antigua mansión.
  Parece que hay gente dentro, puede que tengan combustible...`
 
-const message = `Tras mucho meditarlo sigues dudando de porqué estás aquí, 
-pero te has decidido a hacer caso a la nota que encontraste en el piso de tu mejor 
-amigo desaparecido. En la nota que constaba esta dirección como su última ubicación.
+const message = `Tras mucho meditarlo sigues dudando porqué estás aquí.
+Finalmente te has decidido a hacer caso a la nota que encontraste en el piso de tu
+amigo desaparecido.
+En ella, constaba esta dirección como su última ubicación.
 Ahora ya estás aquí y no hay vuelta atrás:`
 export class Game {
     canvas;

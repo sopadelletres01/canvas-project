@@ -220,3 +220,19 @@ box-shadow: inset 0px 0px 12px 6px rgba(173, 173, 173, 0.81);
   width: 800px;
   font-size: 26px;
 }
+
+
+
+.object:hover{
+  display: block !important;
+  filter: blur(115px) drop-shadow(-10px -10px 75px #ff00ff);
+}
+
+.object {
+  /* animation:spin 4s linear infinite; */
+  border-radius: 50%;
+  box-shadow: inset 20px 0 20px rgba(99, 99, 255, 0.466);
+ 
+}
+
+/* @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
