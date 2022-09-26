@@ -3,93 +3,11 @@
   <head>
     <title>Canvas</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <script type="module" defer src="./index.js"></script>
   </head>
 
   <body>
-    <!--UI-->
-    <button style="display: none;" id="return" ><img src="./src/images/return.png"/></button>
-    <h1 id="gameover" style="display:none;">No has podido escapar a tiempo y las hermanas te han encontrado</h1>
-    <button style="display: none;" id="restart" >Restart Game</button>
-    <div style="display: none;" id="countdownWrapper">
-      <div>
-        <progress value="0" max="300" id="progressBar"></progress>
-        <span id="countdown">300</span><span> Seconds Left</span>
-      </div>
-    </div>
-    <div id="message">
-      <p></p>
-      <button>Entrar a la casa</button>
-    </div>
-    <div style="display: none;" id="hint">
-      <p></p>
-    </div>
-    <div style="display: none;" id="alert">
-      <p>Te queda la mitad del tiempo</p>
-    </div>
-    <div style="display: none;" id="winalert">
-      <p>Entras en el portal a otra dimension para buscar a tu amigo. El viaje acaba de empezar</p>
-    </div>
-    <!--UI-->
-    <!--Sounds-->
-    <audio id="corridor"><source src="./src/sounds/corridor.mp3" type="audio/mp3"></source></audio>
-    <audio loop id="main"><source src="./src/sounds/ost3.mp3" type="audio/mp3"></source></audio>
-    <audio id="jumpscare2audio"><source src="./src/sounds/wrongway.mp3" type="audio/mp3"></source></audio>
-    <audio id="secret"><source src="./src/sounds/secret.mp3" type="audio/mp3"></source></audio>
-    <audio id="secretdone"><source src="./src/sounds/secretdone.mp3" type="audio/mp3"></source></audio>
-    <audio id="escalated"><source src="./src/sounds/escalatesound.mp3" type="audio/mp3"></source></audio>
-    <!--Sounds-->
-    <img style="display:none" src="./src/images/forestmansion2.jpg" id="forest"/>
-    <img style="display:none" src="./src/images/scarejump1.jpg" id="lose"/>
-    <video style="display: none;" id="win" ><source src="src/images/portal.mp4" type="video/mp4"/></video>
-    
-    <img style="display:none" src="./src/images/Scenes/hall5.jpg" id="hall"/>
-    <img style="display:none" src="./src/images/Scenes/frontdoor2.jpg" id="frontdoor2"/>
-    <img style="display:none" src="./src/images/Scenes/frontdoor2l.jpg" id="frontdoor2l"/>
-    <img style="display:none" src="./src/images/Scenes/frontdoor2zoom.jpg" id="frontdoor2zoom"/>
-    <img style="display:none" src="./src/images/Scenes/rightwall.jpg" id="rightwall"/>
-    <img style="display:none" src="./src/images/Scenes/statue1.jpg" id="statue"/>
-    <img style="display:none" src="./src/images/Scenes/statuezoom.jpg" id="statuezoom"/>
-    <img style="display:none" src="./src/images/Scenes/statue2.jpg" id="statue2"/>
-    <img style="display:none" src="./src/images/Scenes/stairs1left.jpg" id="stairs1l"/>
-    <img style="display:none" src="./src/images/Scenes/stairs1right.jpg" id="stairs1"/>
-    <img style="display:none" src="./src/images/Scenes/stairs2right.jpg" id="stairs2"/>
-    <img style="display:none" src="./src/images/Scenes/stairs2left.jpg" id="stairs2l"/>
-    <img style="display:none" src="./src/images/Scenes/stairs3.jpg" id="stairs3"/>
-    <img style="display:none" src="./src/images/Scenes/leftdoor.jpg" id="leftdoor"/>
-    <img style="display:none" src="./src/images/Scenes/frontdoor.png" id="frontdoor"/>
-    <img style="display:none" src="./src/images/Scenes/mainroom.jpg" id="mainroom"/>
-    <img style="display:none" src="./src/images/scarejump2.jpg" id="jumpscare2"/>
-    <img style="display:none" src="./src/images/Scenes/table.jpg" id="table"/>
-    <div class="object" style="display:none" id="door" ></div>
-    <div class="object" style="display:none" id="door2" ></div>
-    <div class="object" style="display:none" id="door3" ></div>
-    <div class="object" style="display:none" id="door6" ></div>
-    <div class="object" style="display:none" id="door7" ></div>
-    <div class="object" style="display:none" id="door4" ></div>
-    <div class="object" style="display:none" id="door5" ></div>
-    <div class="object" style="display:none" id="door8" ></div>
-    <div class="object" style="display:none" id="door9" ></div>
-    <div class="object" style="display:none" id="door10" ></div>
-    <div class="object" style="display:none" id="door11" ></div>
-    <div class="object" style="display:none" id="door12" ></div>
-    <div class="object" style="display:none" id="door13" ></div>
-    <div class="object" style="display:none" id="door14" ></div>
-    <div class="object" style="display:none" id="door15" ></div>
-    <div class="object" style="display:none" id="door16" ></div>
-    <div class="object" style="display:none" id="door17" ></div>
-    <div class="object" style="display:none" id="door18" ></div>
-    <div class="object" style="display:none" id="door19" ></div>
-    <div class="object" style="display:none" id="door20" ></div>
-    <div class="object" style="display:none" id="door21" ></div>
-    <div class="object" style="display:none" id="door22" ></div>
-    <div class="object" style="display:none" id="door23" ></div>
-    <!--Items--> 
-    <div style="display:none" id="keySocket" ></div>
-    <img style="display:none" src="./src/images/goldkey.jpg" id="key" ></img>
-    <img style="display:none" src="./src/images/candle2.png" id="candle" ></img>
-    <img style="display:none" src="./src/images/pergamino.webp" id="letter" ></img>
-    <canvas id="canvas"> </canvas>
-    <script type="module" src="src/index.js"></script>
+    <main id="main"></main>
   </body>
 </html>
