@@ -1,28 +1,9 @@
-type Draggable = {
-    drag: () => void
-}
+import Game from "./classes/Game/index"
 
-type Resizable = {
-    resize: () => void
-}
+window.addEventListener("load", () => {
+  const main = document.getElementById("main") || new HTMLElement();
 
-type UIWidget = Draggable & Resizable;
+  const game = new Game(main);
 
-let textBox: UIWidget = {
-    drag: () => {},
-    resize: () => {}
-}
-
-type Quantity = 50 | 100
-type Metric = "cm" | "inch"
-
-let measure: `${Quantity}|${Metric}`= "100|cm"
-
-
-let customer:{
-    age:number
-}={
-    age:15
-}
-
-console.log(customer?.age)
+  game.init();
+});
