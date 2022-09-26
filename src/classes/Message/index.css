@@ -1,0 +1,20 @@
+.startMessageContainer {
+  background: url("https://res.cloudinary.com/dcgbmo9ov/image/upload/v1664214084/EnterDarknessGallery/HUD/papiro_fnw0uk.png")
+    no-repeat;
+  color: white;
+  font-size: 24px;
+  min-width: 70%;
+  min-height: 80%;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    .startMessageContainer {
+      min-width: 100%;
+    }
+  }
