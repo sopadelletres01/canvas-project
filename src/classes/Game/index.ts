@@ -1,5 +1,6 @@
 import GameStartEvent from "../Events/GameStart/index";
 import Player from "../Player/index";
+import SceneHandler from "../SceneHandler/index";
 import StartMenu from "../StartMenu/index";
 
 const url = "https://img.freepik.com/free-vector/colorful-palm-silhouettes-background_23-2148541792.jpg?w=2000"
@@ -7,11 +8,13 @@ const url = "https://img.freepik.com/free-vector/colorful-palm-silhouettes-backg
 export default class Game {
   #player: Player;
   #mainContainer: HTMLElement;
+  #sceneHandler: SceneHandler;
   // The non-null assertion operator(!) tells the compiler that this property will be initialized somewhere but not necessarily in the constructor
   #startMenu!: StartMenu;
   constructor(mainContainer: HTMLElement) {
     this.#player = new Player("Marc");
     this.#mainContainer = mainContainer;
+    this.#sceneHandler = new SceneHandler(mainContainer,this.#player,[]);
   }
 
   init(): void {
@@ -20,9 +23,13 @@ export default class Game {
     this.#loadStartMenu()
 
     //Catches de event that is fired with the onClick event of the startButton
-    window.addEventListener("gameStarted",(e:GameStartEvent)=>{
+    window.addEventListener("gameStart",(e:GameStartEvent)=>{
+      //Arrow functions doesn't create new "this"
       e.preventDefault()
       this.#startMenu.clear()
+
+      //Start game
+      this.#start();
     })
   }
 
@@ -31,5 +38,9 @@ export default class Game {
 
     this.#startMenu = new StartMenu(url, "Test Message" ,this.#mainContainer);
     this.#startMenu.draw()
+  }
+
+  #start():void{
+    this.#sceneHandler.start()
   }
 }

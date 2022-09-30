@@ -38,6 +38,6 @@ export default class StartMenu {
   }
 
   clear(): void {
-    this.#sceneContainer.replaceChildren();
+    this.#parentContainer.replaceChildren();
   }
 }
