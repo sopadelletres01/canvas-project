@@ -1,9 +1,8 @@
-import Scene from "../../Scene/index";
 
 export default class ChangeSceneEvent extends Event {
-    scene:Scene;
-    constructor(scene:Scene) {
+    sceneRef:string;
+    constructor(sceneRef:string) {
         super("sceneChange",{ cancelable: true })
-        this.scene = scene
+        this.sceneRef = sceneRef
     }
 }
