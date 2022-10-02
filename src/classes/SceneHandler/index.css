@@ -8,9 +8,9 @@
 
 .test{
   position: absolute;
-  right: 50%;
-  top: 50%;
+  right: 45%;
+  top: 45%;
   width: 10vw;
-  height: 100px;
+  height: 24vh;
   background-color: red;
 }

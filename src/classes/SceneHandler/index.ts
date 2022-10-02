@@ -55,11 +55,11 @@ export default class SceneHandler {
 
     //Test
 
-    // const test = document.createElement("div")
-    // test.innerHTML="tusa"
-    // test.style.color = "red"
-    // test.className="test"
-    // this.#sceneContainer.appendChild(test)
+    const test = document.createElement("div")
+    test.innerHTML="tusa"
+    test.style.color = "red"
+    test.className="test"
+    this.#sceneContainer.appendChild(test)
 
     //Test
 
