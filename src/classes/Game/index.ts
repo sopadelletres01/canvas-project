@@ -31,6 +31,7 @@ export default class Game {
       //Start game
       this.#start();
     })
+
   }
 
   #loadStartMenu(): void {

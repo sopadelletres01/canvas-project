@@ -1,9 +1,14 @@
-import Game from "./classes/Game/index"
+import Game from "./classes/Game/index";
+import { getElements, setupGame } from "./utils/index";
 
 window.addEventListener("load", () => {
-  const main = document.getElementById("main") || new HTMLElement();
+  //Get main and overlay elements from HTML
+  const [main,overlay] = getElements()
 
-  const game = new Game(main);
+  //Create the game
+  let game: Game = new Game(main);
 
-  game.init();
+  //Setup the game and initialize it
+  setupGame(game, overlay);
 });
+

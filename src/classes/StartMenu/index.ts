@@ -2,7 +2,6 @@ import MessageBox from "../Message/index";
 import "./index.css";
 
 export default class StartMenu {
-  #backgroundElement: HTMLImageElement;
   #sceneContainer: HTMLElement;
   #parentContainer: HTMLElement;
   #url: string;
@@ -10,7 +9,6 @@ export default class StartMenu {
   constructor(url: string, message: string, parentContainer: HTMLElement) {
     this.#parentContainer = parentContainer;
     this.#url = url;
-    this.#backgroundElement = document.createElement("img");
     this.#sceneContainer = document.createElement("div");
     this.#messageBox = new MessageBox(message, this.#sceneContainer);
   }
@@ -20,8 +18,9 @@ export default class StartMenu {
     this.#sceneContainer.className = "startContainer"
 
     //Setup background
-    this.#backgroundElement.src = this.#url;
-    this.#backgroundElement.className = "startBackground";
+    const bg ='url("https://res.cloudinary.com/dcgbmo9ov/image/upload/v1664213892/EnterDarknessGallery/Backgrounds/forestmansion2_tlze3v.jpg")';
+    this.#sceneContainer.style.setProperty("background-image", bg);
+    this.#sceneContainer.style.setProperty("background-repeat", "no-repeat");
 
     //Setup messageBox content
     this.#messageBox.setup();
@@ -30,8 +29,6 @@ export default class StartMenu {
   draw(): void {
     //Setup elements
     this.#setupElements();
-    //Append background to the scene
-    this.#sceneContainer.appendChild(this.#backgroundElement);
     //Append scene to the parent container
     this.#parentContainer.appendChild(this.#sceneContainer)
     this.#messageBox.draw();
