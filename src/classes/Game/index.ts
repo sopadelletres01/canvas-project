@@ -24,7 +24,7 @@ export default class Game {
 
   #createScenes():Scene[]{
     return scenes.map((scene:SceneType)=>{
-      return new Scene(scene.id,scene.background,scene.paths)
+      return new Scene(scene.id,scene.background,scene.paths,scene.items || [])
     })
   }
 

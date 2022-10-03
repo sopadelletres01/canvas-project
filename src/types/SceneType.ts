@@ -5,7 +5,7 @@ export default interface SceneType {
     id: string,
     background: string,
     paths: PathType[],
-    objects?: ItemType[],
+    items?: ItemType[],
     return?: string,
     hint?: string,
     condition?: "goldenKey" | "other"

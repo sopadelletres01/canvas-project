@@ -1,4 +1,3 @@
-import Scene from "../../Scene/index";
 
 export default abstract class SceneObject {
   protected x: number;
