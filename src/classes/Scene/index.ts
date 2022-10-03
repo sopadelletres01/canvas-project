@@ -7,6 +7,8 @@ export default class Scene {
   //Readonly so we doesn't have to create a getter for each property
   readonly id: string;
   readonly background: string;
+  readonly hint: string;
+  readonly hintShouldBeDisplayed: boolean;
   readonly paths: PathType[];
   readonly items: ItemType[];
   #pathObjects: PathObject[];
@@ -15,12 +17,15 @@ export default class Scene {
     id: string,
     background: string,
     paths: PathType[],
-    items: ItemType[]
+    items: ItemType[],
+    hint:string
   ) {
     this.id = id;
     this.background = background;
     this.paths = paths;
     this.items = items;
+    this.hint = hint || ""
+    this.hintShouldBeDisplayed = Boolean(hint)
     this.#pathObjects = this.#generatePathObjects();
     this.#itemObjects = this.#generateItemObjects();
   }

@@ -1,5 +1,6 @@
 import ChangeSceneEvent from "../Events/ChangeScene/index";
 import PickItemEvent from "../Events/PickItem";
+import HintBox from "../HintBox";
 import Player from "../Player/index";
 import Scene from "../Scene/index";
 import "./index.css";
@@ -8,6 +9,7 @@ export default class SceneHandler {
   #player: Player;
   #currentScene: Scene;
   #prevScene: Scene;
+  #hintBox: HintBox;
   #scenes: Array<Scene>;
   #mainContainer: HTMLElement;
   #sceneContainer: HTMLElement;
@@ -16,6 +18,7 @@ export default class SceneHandler {
     this.#currentScene = scenes[0];
     this.#prevScene = scenes[0];
     this.#player = player;
+    this.#hintBox = new HintBox();
     this.#mainContainer = mainContainer;
     this.#sceneContainer = document.createElement("div");
   }
@@ -25,8 +28,16 @@ export default class SceneHandler {
     this.#renderCurrentScene();
   }
 
+  checkHintShouldBeDisplayed(): boolean {
+    return this.#currentScene.hintShouldBeDisplayed;
+  }
+
   setup(): void {
     this.#sceneContainer.className = "sceneHandlerContainer";
+
+    //Setup hintBox
+    this.#hintBox.setup(this.#sceneContainer);
+    this.#hintBox.setHint(this.#currentScene.hint);
 
     //Scene Change Custom Event
     window.addEventListener("sceneChange", ((e: ChangeSceneEvent) => {
@@ -57,6 +68,8 @@ export default class SceneHandler {
     this.#prevScene = this.#currentScene;
     //Current scene is the new scene we are changing
     this.#currentScene = scene;
+    //Clear the previous hint
+    this.#hintBox.clear();
     //Clear the previous scene
     this.#prevScene.clear(this.#sceneContainer);
     //Render the current scene
@@ -71,6 +84,11 @@ export default class SceneHandler {
 
     //Draw current scene
     this.#currentScene.draw(this.#sceneContainer);
+
+    //Show hint
+    if (this.checkHintShouldBeDisplayed()) {
+      this.#hintBox.draw();
+    }
 
     this.#mainContainer.appendChild(this.#sceneContainer);
   }
