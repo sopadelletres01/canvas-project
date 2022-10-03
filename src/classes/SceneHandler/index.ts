@@ -33,6 +33,7 @@ export default class SceneHandler {
   setup(): void {
     this.#sceneContainer.className = "sceneHandlerContainer";
 
+    //Custom event
     window.addEventListener("sceneChange", ((e: ChangeSceneEvent) => {
       //Arrow functions doesn't create new "this"
       console.log("changeScene", e);
@@ -42,14 +43,20 @@ export default class SceneHandler {
   }
 
   #changeScene(scene: Scene): void {
+    //Previous scene will be the currentScene (before the change)
     this.#prevScene = this.#currentScene;
+    console.log("currentScene",this.#currentScene);
+    console.log("prevScene",this.#prevScene);
+    //Current scene is the new scene we are changing 
     this.#currentScene = scene;
-    this.#prevScene.clear()
+    console.log("currentSceneAfter",this.#currentScene);
+    //Clear the previous scene
+    this.#prevScene.clear(this.#sceneContainer)
+    //Render the current scene
     this.#renderCurrentScene();
   }
 
   #renderCurrentScene(): void {
-    console.log(this.#currentScene);
     const bg =
       `url(${this.#currentScene?.background})` ||
       'url("https://res.cloudinary.com/dcgbmo9ov/image/upload/v1664213751/EnterDarknessGallery/Scenes/hall5_m4cgzc.jpg")';
@@ -63,6 +70,5 @@ export default class SceneHandler {
     this.#currentScene.draw(this.#sceneContainer)
 
     this.#mainContainer.appendChild(this.#sceneContainer);
-    console.log("Render");
   }
 }

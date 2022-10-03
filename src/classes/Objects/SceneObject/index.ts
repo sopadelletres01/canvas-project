@@ -19,4 +19,8 @@ export default abstract class SceneObject {
   draw(container: HTMLElement): void {
     container.appendChild(this.htmlElement);
   }
+
+  clear(container:HTMLElement):void{
+    container.removeChild(this.htmlElement);
+  }
 }

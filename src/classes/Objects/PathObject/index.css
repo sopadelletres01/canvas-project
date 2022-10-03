@@ -1,0 +1,9 @@
+.pathObject:hover {
+  filter: blur(115px) drop-shadow(-10px -10px 75px #ff00ff);
+}
+
+.pathObject {
+  /* animation:spin 4s linear infinite; */
+  border-radius: 50%;
+  box-shadow: inset 20px 0 20px rgba(99, 99, 255, 0.466);
+}

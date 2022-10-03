@@ -30,7 +30,6 @@ export default class Game {
 
   init(): void {
     console.log("player", this.#player);
-    console.log("data", scenes);
     //Load the initial menu/intro
     this.#loadStartMenu()
 

@@ -8,7 +8,7 @@ export default class Scene {
   readonly background: string;
   readonly paths: PathType[];
   readonly items?: ItemType[];
-  readonly pathObjects: PathObject[];
+  #pathObjects: PathObject[];
   constructor(
     id: string,
     background: string,
@@ -19,27 +19,39 @@ export default class Scene {
     this.background = background;
     this.paths = paths;
     this.items = items;
-    this.pathObjects = [];
+    this.#pathObjects = [];
+  }
+
+
+  #setPathObjects(pathObjects:PathObject[] | []):void {
+    this.#pathObjects = pathObjects
+
   }
 
   setup(): void {
+    const newPaths: PathObject[] = []
     this.paths.forEach((path) => {
       const pathObject = new PathObject(path.x, path.y,path.width, path.height, path.to)
       pathObject.setup()
-      this.pathObjects.push(pathObject);
+      newPaths.push(pathObject);
     });
+    this.#setPathObjects(newPaths);
   }
 
-  clear(){
-    this.pathObjects.forEach(obj=>{
-      obj.htmlElement.remove()
-
+  clear(sceneContainer:HTMLElement){
+    this.#pathObjects.forEach(obj=>{
+      obj.clear(sceneContainer)
+      
     })
+    
+    //Clear the pathObject array after the clear of the DOM:
+    this.#setPathObjects([]);
+
   }
 
   draw(sceneContainer: HTMLElement): void {
     //Test
-    this.pathObjects.forEach((obj)=>{
+    this.#pathObjects.forEach((obj)=>{
       
       sceneContainer.appendChild(obj.htmlElement);
     })
