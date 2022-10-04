@@ -1,5 +1,6 @@
 import Game from "./classes/Game/index";
 import { getElements, setupGame } from "./utils/index";
+import "./styles/index.css"
 
 window.addEventListener("load", () => {
   //Get main and overlay elements from HTML

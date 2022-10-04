@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Bad+Script&family=Cinzel&family=Crimson+Text:ital@1&family=Space+Mono&display=swap);
 .hintBoxContainer{
     font-family: 'Space Mono', monospace; 
     font-size: .8rem;
@@ -73,4 +74,55 @@
   border-radius: 50%;
   box-shadow: inset 20px 0 20px rgba(99, 99, 255, 0.466);
 }
+
+:root {
+  --mobileS: 425px;
+  --mobileL: 576px;
+  --tabletS: 768px;
+  --tabletL: 992px;
+  --laptop: 1200px;
+  --desktop: 1400px;;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  margin: 0;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+p {
+  margin: 0;
+}
+
 
