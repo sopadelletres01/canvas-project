@@ -1,0 +1,76 @@
+.hintBoxContainer{
+    font-family: 'Space Mono', monospace; 
+    font-size: .8rem;
+    padding: 20px;
+    color: white;
+    position: absolute;
+    background-color: rgb(104, 104, 126);
+    -webkit-box-shadow: inset 0px 0px 12px 6px rgba(61, 61, 61, 0.81); 
+  box-shadow: inset 0px 0px 12px 6px rgba(0, 0, 0, 0.81);
+    top: 20px;
+    right: 50px;
+    width: 30vw;
+  }
+  
+.sceneHandlerContainer {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-color: #111;
+}
+
+.test{
+  position: absolute;
+  right: 45%;
+  top: 45%;
+  width: 10vw;
+  height: 24vh;
+  background-color: red;
+}
+.startMessageContainer {
+  background: url("https://res.cloudinary.com/dcgbmo9ov/image/upload/v1664214084/EnterDarknessGallery/HUD/papiro_fnw0uk.png")
+    no-repeat;
+  color: white;
+  font-size: 24px;
+  min-width: 70%;
+  min-height: 80%;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    .startMessageContainer {
+      min-width: 100%;
+    }
+  }
+.startContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  background-position: center;
+  background-color: #111;
+}
+
+.itemObject{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.pathObject:hover {
+  filter: blur(115px) drop-shadow(-10px -10px 75px #ff00ff);
+}
+
+.pathObject {
+  /* animation:spin 4s linear infinite; */
+  border-radius: 50%;
+  box-shadow: inset 20px 0 20px rgba(99, 99, 255, 0.466);
+}
+
